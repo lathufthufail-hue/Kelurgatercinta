@@ -1,12 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rumah Penuh Cinta | Keluarga dalam Doa 🤍</title>
 
-<title>Rumah Penuh Cinta | Keluarga Tercinta 🤍</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -84,63 +83,65 @@ section {
 }
 
 /* BUNGA TERBANG */
-
 .floating {
     position: fixed;
     z-index: 5;
     pointer-events: none;
     font-size: 25px;
-    opacity: .65;
-    animation: float 6s ease-in-out infinite;
+    opacity: .72;
+    animation: flyFlower 14s linear infinite;
+    will-change: transform, opacity;
 }
 
-.f1 {
-    top: 15%;
-    left: 5%;
-}
+.f1 { top: 105%; left: 4%; animation-delay: -2s; }
+.f2 { top: 85%; right: 8%; animation-delay: -8s; }
+.f3 { top: 115%; left: 25%; animation-delay: -12s; }
+.f4 { top: 95%; right: 28%; animation-delay: -5s; }
+.f5 { top: 110%; left: 62%; animation-delay: -15s; }
+.f6 { top: 100%; right: 2%; animation-delay: -10s; }
+.f7 { top: 108%; left: 40%; animation-delay: -6s; }
+.f8 { top: 120%; right: 35%; animation-delay: -18s; }
+.f9 { top: 102%; left: 78%; animation-delay: -13s; }
+.f10 { top: 112%; right: 18%; animation-delay: -3s; }
 
-.f2 {
-    top: 48%;
-    right: 5%;
-    animation-delay: 2s;
-}
+@keyframes flyFlower {
+    0% {
+        transform: translate3d(0, 15vh, 0)
+                   rotate(0deg) scale(.75);
+        opacity: 0;
+    }
 
-.f3 {
-    bottom: 12%;
-    left: 12%;
-    animation-delay: 4s;
-}
+    10% {
+        opacity: .72;
+    }
 
-.f4 {
-    top: 70%;
-    right: 18%;
-    animation-delay: 1s;
-}
-
-.f5 {
-    top: 30%;
-    left: 45%;
-    animation-delay: 3s;
-}
-
-.f6 {
-    top: 85%;
-    right: 4%;
-    animation-delay: 5s;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
+    25% {
+        transform: translate3d(12vw, -20vh, 0)
+                   rotate(80deg) scale(1);
     }
 
     50% {
-        transform: translateY(-25px) rotate(15deg);
+        transform: translate3d(-10vw, -48vh, 0)
+                   rotate(180deg) scale(.85);
+    }
+
+    75% {
+        transform: translate3d(16vw, -78vh, 0)
+                   rotate(270deg) scale(1.1);
+    }
+
+    90% {
+        opacity: .5;
+    }
+
+    100% {
+        transform: translate3d(-8vw, -120vh, 0)
+                   rotate(360deg) scale(.7);
+        opacity: 0;
     }
 }
 
 /* PEMBUKA */
-
 header {
     min-height: 100vh;
     display: flex;
@@ -200,27 +201,16 @@ header {
 }
 
 @keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    15% {
-        transform: scale(1.15);
-    }
-
-    30% {
-        transform: scale(1);
-    }
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
 }
 
 @keyframes bounce {
-    50% {
-        transform: translateY(8px);
-    }
+    50% { transform: translateY(8px); }
 }
 
 /* JUDUL */
-
 .section-title {
     text-align: center;
     margin-bottom: 45px;
@@ -238,8 +228,7 @@ header {
     line-height: 1.9;
 }
 
-/* SUASANA KELUARGA */
-
+/* SUASANA */
 .atmosphere {
     padding-top: 25px;
 }
@@ -273,8 +262,7 @@ header {
     line-height: 2;
 }
 
-/* KOTAK ABI DAN UMMI */
-
+/* KARTU FOTO */
 .family-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -282,8 +270,6 @@ header {
     max-width: 900px;
     margin: auto;
 }
-
-/* KOTAK FOTO */
 
 .person-card {
     position: relative;
@@ -317,8 +303,6 @@ header {
     background: rgba(255, 255, 255, .9);
     box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
 }
-
-/* FOTO ESTETIK */
 
 .photo {
     position: relative;
@@ -364,6 +348,13 @@ header {
     margin-top: 20px;
 }
 
+.person-card h4 {
+    color: #b36d8e;
+    font-size: 15px;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
 .role {
     color: #c17d9b;
     font-size: 11px;
@@ -381,7 +372,6 @@ header {
 }
 
 /* ANAK-ANAK */
-
 .children-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -389,7 +379,6 @@ header {
 }
 
 /* KUTIPAN */
-
 .quote-box {
     margin-top: 45px;
     padding: 35px 25px;
@@ -413,8 +402,7 @@ header {
     font-size: 13px;
 }
 
-/* GALERI 8 FOTO */
-
+/* GALERI */
 .gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -501,7 +489,6 @@ header {
 }
 
 /* PESAN KELUARGA */
-
 .message-section {
     max-width: 880px;
 }
@@ -545,8 +532,7 @@ header {
     margin-top: 30px;
 }
 
-/* KEGIATAN KELUARGA */
-
+/* KEGIATAN */
 .memory-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -585,7 +571,6 @@ header {
 }
 
 /* QR CODE */
-
 .qr-section {
     text-align: center;
 }
@@ -641,7 +626,6 @@ header {
 }
 
 /* FOOTER */
-
 footer {
     padding: 55px 20px;
     text-align: center;
@@ -656,7 +640,6 @@ footer strong {
 }
 
 /* ANIMASI */
-
 .reveal {
     opacity: 0;
     transform: translateY(35px);
@@ -681,7 +664,6 @@ footer strong {
 }
 
 /* RESPONSIVE */
-
 @media (max-width: 1100px) {
     .gallery {
         grid-template-columns: repeat(3, 1fr);
@@ -759,8 +741,6 @@ footer strong {
     }
 }
 
-/* REDUCE MOTION */
-
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -777,32 +757,34 @@ footer strong {
 <body>
 
 <!-- BUNGA TERBANG -->
-
 <div class="floating f1">🌸</div>
 <div class="floating f2">🤍</div>
 <div class="floating f3">✨</div>
 <div class="floating f4">🌷</div>
 <div class="floating f5">🌸</div>
 <div class="floating f6">💮</div>
+<div class="floating f7">🌼</div>
+<div class="floating f8">🌺</div>
+<div class="floating f9">🌸</div>
+<div class="floating f10">✨</div>
 
 <!-- PEMBUKA -->
-
 <header>
     <div class="hero">
-
         <div class="hero-symbol">🏡</div>
 
         <div class="label">Our Beautiful Family</div>
 
         <h1>
-            Rumah Kecil,<br>
-            <span>Cinta Tak Terbatas</span>
+            Rumah Penuh Cinta,<br>
+            <span>Keluarga dalam Doa</span>
         </h1>
 
         <p>
-            Keluarga adalah tempat pertama kita belajar mencintai,
-            tempat paling nyaman untuk pulang, dan hadiah terindah
-            yang Allah berikan dalam kehidupan kita. 🤍
+            Keluarga adalah nikmat terindah dari Allah;
+            tempat hati belajar mencintai, tempat lelah menemukan
+            ketenangan, dan tempat setiap doa tumbuh menjadi
+            harapan yang indah. 🤍
         </p>
 
         <a href="#suasana" class="btn">
@@ -812,12 +794,10 @@ footer strong {
         <span class="scroll">
             ↓ Gulir untuk melihat kenangan ↓
         </span>
-
     </div>
 </header>
 
 <!-- SUASANA KELUARGA -->
-
 <section id="suasana" class="atmosphere reveal">
 
     <div class="section-title">
@@ -832,7 +812,6 @@ footer strong {
     </div>
 
     <div class="atmosphere-box">
-
         <div class="atmosphere-content">
 
             <div class="label" style="color:#ffe1ee;">
@@ -850,17 +829,14 @@ footer strong {
             </p>
 
         </div>
-
     </div>
 
 </section>
 
 <!-- ABI DAN UMMI -->
-
 <section class="reveal">
 
     <div class="section-title">
-
         <div class="label">The Beginning of Everything</div>
 
         <h2>Abi & Ummi 🤍</h2>
@@ -869,13 +845,11 @@ footer strong {
             Dua sosok tercinta yang menjadi awal dari keluarga
             penuh cinta ini.
         </p>
-
     </div>
 
     <div class="family-grid">
 
         <div class="person-card">
-
             <div class="photo">
                 <img src="umiandabi1.jpeg" alt="Foto Abi dan Ummi">
             </div>
@@ -891,11 +865,9 @@ footer strong {
                 pelindung, penguat, dan tempat ternyaman
                 untuk seluruh keluarga.
             </p>
-
         </div>
 
         <div class="person-card">
-
             <div class="photo">
                 <img src="fotokeluarga1.jpeg" alt="Foto Keluarga">
             </div>
@@ -910,13 +882,11 @@ footer strong {
                 Bersama keluarga, setiap hari menjadi lebih
                 bermakna, hangat, dan penuh kebahagiaan.
             </p>
-
         </div>
 
     </div>
 
     <div class="quote-box">
-
         <p>
             “Abi adalah kekuatan keluarga,
             Ummi adalah kehangatan rumah,
@@ -927,17 +897,14 @@ footer strong {
         <span>
             Untuk Abi dan Ummi tercinta 🤍
         </span>
-
     </div>
 
 </section>
 
 <!-- ANAK-ANAK -->
-
 <section class="reveal">
 
     <div class="section-title">
-
         <div class="label">Our Little Stars</div>
 
         <h2>Anak-Anak Kesayangan</h2>
@@ -946,53 +913,61 @@ footer strong {
             Tiga hati yang membuat keluarga semakin lengkap
             dan penuh warna.
         </p>
-
     </div>
 
     <div class="children-grid">
-<!-- FOTO FOTO KAKAK AND ADIK -->
-        <div class="person-card">
 
+        <!-- ANAK PERTAMA -->
+        <div class="person-card">
 
             <div class="photo">
                 <img src="foto kakak 2.jpeg" alt="Foto Kakak">
             </div>
 
             <h3>Anak Pertama</h3>
-                <h4>Tsabita Munira Laththuf</h4>
-
-            <div class="role">
-                The Sweet Middle
-            </div>
-
-            <p>
-                Kakak yang membawa warna, tawa,
-                dan kebahagiaan di tengah keluarga.
-            </p>
-
-        </div>
-        
-              <div class="person-card">
-                    <div class="photo">
-                <img src="saya.jpeg" alt="Foto Anak Pertama">
-            </div>
-
-            <h3>Anak Kedua</h3>
-            <h4>Thufail lathuf</h4>
+            <h4>Tsabita Munira Laththuf</h4>
 
             <div class="role">
                 The First Love
             </div>
 
             <p>
-                Bagian awal dari cerita indah keluarga
-                yang selalu membawa kebahagiaan.
+                Kakak adalah salah satu hadiah pertama yang Allah
+                titipkan dalam keluarga ini. Semoga selalu menjadi
+                pribadi yang kuat, penyayang, dan penuh kebaikan.
+                Terima kasih telah menjadi bagian penting dari cerita
+                keluarga serta menjadi sosok yang selalu kami banggakan
+                dan sayangi. 🤍
+            </p>
+
+        </div>
+
+        <!-- ANAK KEDUA -->
+        <div class="person-card">
+
+            <div class="photo">
+                <img src="saya.jpeg" alt="Foto Anak Kedua">
+            </div>
+
+            <h3>Anak Kedua</h3>
+            <h4>Thufail lathuf</h4>
+
+            <div class="role">
+                The Sweet Middle
+            </div>
+
+            <p>
+                Sebagai anak kedua, semoga selalu menjadi penyejuk
+                suasana, pembawa tawa, dan pribadi yang tumbuh dengan
+                iman serta akhlak yang baik. Semoga setiap langkah
+                dipenuhi keberkahan, setiap impian dimudahkan Allah,
+                dan kasih sayang untuk keluarga selalu tumbuh
+                sepanjang kehidupan. 🤍
             </p>
 
         </div>
 
         <!-- ANAK KETIGA -->
-
         <div class="person-card">
 
             <div class="photo">
@@ -1000,15 +975,18 @@ footer strong {
             </div>
 
             <h3>Anak Ketiga</h3>
-                <h4>Hudzaifah lathuf</h4>
+            <h4>Hudzaifah lathuf</h4>
 
             <div class="role">
                 The Little Sunshine
             </div>
 
             <p>
-                Kehadiran yang melengkapi cerita
-                keluarga tercinta.
+                Adik kecil yang melengkapi warna dalam keluarga ini.
+                Semoga tumbuh menjadi anak yang saleh, lembut hatinya,
+                luas ilmunya, dan selalu berada dalam lindungan Allah.
+                Kehadiranmu adalah kebahagiaan kecil yang membuat rumah
+                ini terasa semakin lengkap dan penuh cinta. 🤍
             </p>
 
         </div>
@@ -1017,29 +995,23 @@ footer strong {
 
 </section>
 
-<!-- GALERI KELUARGA 8 FOTO -->
-
+<!-- GALERI KELUARGA -->
 <section class="reveal">
 
     <div class="section-title">
-
         <div class="label">Our Precious Memories</div>
 
         <h2>Galeri Keluarga 🤍</h2>
 
         <p>
-            Delapan foto indah yang menyimpan banyak
-            cerita dan kenangan berharga.
+            Setiap foto menyimpan cerita dan kenangan
+            yang akan selalu berharga.
         </p>
-
     </div>
 
     <div class="gallery">
 
-        <!-- FOTO 1 -->
-
         <div class="gallery-card">
-
             <div class="gallery-item">
                 <img src="fotokeluarga1.jpeg" alt="Foto Keluarga Pertama">
             </div>
@@ -1048,13 +1020,9 @@ footer strong {
                 <h3>Waktu Bersama</h3>
                 <p>Kebersamaan yang hangat</p>
             </div>
-
         </div>
 
-        <!-- FOTO 2 -->
-
         <div class="gallery-card">
-
             <div class="gallery-item">
                 <img src="fotokeluarga2.jpeg" alt="Foto Keluarga Kedua">
             </div>
@@ -1063,13 +1031,9 @@ footer strong {
                 <h3>Senyuman Kita</h3>
                 <p>Bahagia dalam kesederhanaan</p>
             </div>
-
         </div>
 
-        <!-- FOTO 3 -->
-
         <div class="gallery-card">
-
             <div class="gallery-item">
                 <img src="fotokeluarga3.jpeg" alt="Foto Keluarga Ketiga">
             </div>
@@ -1078,13 +1042,9 @@ footer strong {
                 <h3>Kenangan Manis</h3>
                 <p>Disimpan di dalam hati</p>
             </div>
-
         </div>
 
-        <!-- FOTO 4 -->
-
         <div class="gallery-card">
-
             <div class="gallery-item">
                 <img src="fotokeluarga4.jpeg" alt="Foto Keluarga Keempat">
             </div>
@@ -1093,43 +1053,31 @@ footer strong {
                 <h3>Waktu Bersama</h3>
                 <p>Selalu menjadi kenangan</p>
             </div>
-
         </div>
 
-        <!-- FOTO 5 -->
-
         <div class="gallery-card">
-
             <div class="gallery-item">
                 <img src="fotokeluarga5.jpeg" alt="Foto Keluarga Kelima">
             </div>
 
             <div class="gallery-caption">
-                <h3>Waktu Bersama</h3>
-                <p>Tawa yang tak terlupakan</p>
+                <h3>Tawa yang Indah</h3>
+                <p>Kenangan yang tak terlupakan</p>
             </div>
-
         </div>
 
-        <!-- FOTO 6 -->
-
         <div class="gallery-card">
-
             <div class="gallery-item">
                 <img src="fotokeluarga6.jpeg" alt="Foto Keluarga Keenam">
             </div>
 
             <div class="gallery-caption">
-                <h3>Waktu Bersama</h3>
-                <p>Hangatnya keluarga</p>
+                <h3>Hangatnya Rumah</h3>
+                <p>Cinta di setiap kebersamaan</p>
             </div>
-
         </div>
 
-        <!-- FOTO 7 -->
-
         <div class="gallery-card">
-
             <div class="gallery-item">
                 <img src="fotokeluarga7.jpeg" alt="Foto Keluarga Ketujuh">
             </div>
@@ -1138,13 +1086,9 @@ footer strong {
                 <h3>Memori Indah</h3>
                 <p>Disimpan selamanya</p>
             </div>
-
         </div>
 
-        <!-- FOTO 8 -->
-
         <div class="gallery-card">
-
             <div class="gallery-item">
                 <img src="fotokeluarga8.jpeg" alt="Foto Keluarga Kedelapan">
             </div>
@@ -1153,7 +1097,6 @@ footer strong {
                 <h3>Keluarga Selamanya</h3>
                 <p>Cinta yang tidak berakhir</p>
             </div>
-
         </div>
 
     </div>
@@ -1161,11 +1104,9 @@ footer strong {
 </section>
 
 <!-- PESAN UNTUK KELUARGA -->
-
 <section class="message-section reveal">
 
     <div class="section-title">
-
         <div class="label">From Our Hearts</div>
 
         <h2>Pesan Untuk Keluarga 💌</h2>
@@ -1174,7 +1115,6 @@ footer strong {
             Sebuah pesan sederhana dari hati
             untuk orang-orang yang paling berarti.
         </p>
-
     </div>
 
     <div class="message-card">
@@ -1186,18 +1126,22 @@ footer strong {
         </h3>
 
         <p>
+            Bismillahirrahmanirrahim. Segala puji bagi Allah
+            yang telah memberikan kita kesempatan untuk hidup
+            bersama dalam sebuah keluarga yang penuh kasih sayang.
             Terima kasih telah menjadi rumah yang paling nyaman
-            untuk kami. Terima kasih atas setiap pengorbanan,
-            doa, nasihat, dan kasih sayang yang tidak pernah
-            berhenti diberikan.
+            untuk kami, tempat kami belajar tentang cinta,
+            kesabaran, tanggung jawab, dan arti kehidupan.
         </p>
 
         <p>
             Abi, terima kasih telah menjadi sosok yang kuat,
-            pelindung keluarga, dan contoh tentang arti
-            tanggung jawab serta perjuangan. Setiap usaha
-            dan pengorbanan Abi akan selalu menjadi hal
-            yang sangat berharga bagi kami.
+            pelindung keluarga, dan contoh tentang arti perjuangan.
+            Setiap usaha, kerja keras, dan pengorbanan Abi akan
+            selalu menjadi hal yang sangat berharga bagi kami.
+            Semoga Allah memberikan kesehatan, umur yang berkah,
+            serta membalas setiap kebaikan Abi dengan pahala
+            yang berlipat ganda.
         </p>
 
         <p>
@@ -1205,40 +1149,41 @@ footer strong {
             kesabaran, dan doa-doa yang selalu mengiringi
             setiap langkah kami. Kasih sayang Ummi membuat
             rumah ini terasa hangat dan penuh kedamaian.
+            Semoga Allah senantiasa menjaga Ummi, memberikan
+            kebahagiaan, dan mengabulkan setiap doa baik Ummi.
         </p>
 
         <p>
-            Untuk saudara-saudaraku, semoga kita selalu
-            saling menjaga, saling menyayangi, dan tetap
-            bersama meskipun kelak kita memiliki jalan
-            kehidupan masing-masing. Semoga tidak ada
-            jarak yang mampu menghilangkan rasa sayang
-            di antara kita.
+            Untuk kakak dan adik-adikku, semoga kita selalu
+            saling menjaga, saling menyayangi, dan saling
+            menguatkan dalam keadaan apa pun. Mungkin suatu
+            hari nanti kita akan memiliki jalan kehidupan
+            masing-masing, tetapi semoga hati kita tetap dekat.
+            Jangan pernah lupa bahwa keluarga adalah tempat
+            kita kembali dan tempat doa selalu menyertai.
         </p>
 
         <p>
-            Semoga Allah selalu memberikan kesehatan,
-            kebahagiaan, umur yang panjang, rezeki yang berkah,
-            dan melindungi keluarga kita di setiap langkah.
-            Semoga rumah ini selalu dipenuhi kedamaian,
-            tawa, dan cinta. Semoga kita selalu diberikan
-            kesempatan untuk berkumpul dan menciptakan
-            kenangan indah bersama.
+            Ya Allah, jagalah keluarga kami dalam lindungan-Mu.
+            Berikanlah kesehatan, rezeki yang halal dan berkah,
+            umur yang bermanfaat, serta hati yang selalu dekat
+            dengan-Mu. Jadikan rumah kami tempat tumbuhnya iman,
+            ilmu, kasih sayang, dan akhlak yang baik.
+            Satukanlah hati kami dalam kebaikan dan keberkahan.
         </p>
 
         <p>
-            Apa pun yang terjadi di masa depan, semoga
-            keluarga ini selalu menjadi tempat kita kembali.
-            Karena tidak ada hadiah yang lebih indah
-            daripada memiliki keluarga yang saling mencintai,
-            saling memahami, dan saling mendoakan.
+            Apa pun yang terjadi di masa depan, semoga keluarga
+            ini selalu menjadi tempat kita pulang. Semoga setiap
+            kesulitan dapat kita lewati bersama, setiap kebahagiaan
+            dapat kita syukuri bersama, dan setiap langkah selalu
+            ditemani doa serta kasih sayang.
         </p>
 
         <div class="closing">
-            “Keluarga bukan hanya tentang tinggal
-            di rumah yang sama, tetapi tentang
-            hati yang selalu ingin pulang
-            kepada satu sama lain.” 🤍
+            “Keluarga adalah amanah dari Allah,
+            tempat cinta tumbuh, doa dipanjatkan,
+            dan hati selalu menemukan jalan untuk pulang.” 🤍
             <br><br>
             Dengan penuh cinta,<br>
             Keluarga Tercinta 🌸
@@ -1249,11 +1194,9 @@ footer strong {
 </section>
 
 <!-- KEGIATAN KELUARGA -->
-
 <section class="reveal">
 
     <div class="section-title">
-
         <div class="label">Little Things, Big Happiness</div>
 
         <h2>Suasana yang Kita Cintai</h2>
@@ -1262,56 +1205,48 @@ footer strong {
             Momen-momen sederhana yang membuat keluarga
             menjadi tempat paling istimewa.
         </p>
-
     </div>
 
     <div class="memory-grid">
 
         <div class="memory-card">
-
             <div class="icon">🍽️</div>
 
             <h3>Makan Bersama</h3>
 
             <p>
-                Menikmati makanan sederhana sambil
-                berbagi cerita dan tawa bersama keluarga.
+                Menikmati makanan sederhana sambil berbagi
+                cerita, tawa, dan rasa syukur bersama keluarga.
             </p>
-
         </div>
 
         <div class="memory-card">
-
             <div class="icon">🛋️</div>
 
             <h3>Berkumpul di Rumah</h3>
 
             <p>
                 Duduk bersama, berbincang, dan menikmati
-                suasana hangat di ruang keluarga.
+                suasana hangat di ruang keluarga tercinta.
             </p>
-
         </div>
 
         <div class="memory-card">
-
             <div class="icon">🌿</div>
 
             <h3>Jalan-Jalan Bersama</h3>
 
             <p>
-                Menciptakan kenangan baru melalui
-                perjalanan kecil yang penuh kebahagiaan.
+                Menciptakan kenangan baru melalui perjalanan
+                kecil yang penuh kebahagiaan dan kebersamaan.
             </p>
-
         </div>
 
     </div>
 
 </section>
 
-<!-- PESAN PENUTUP TAMBAHAN -->
-
+<!-- PESAN PENUTUP -->
 <section class="reveal">
 
     <div class="quote-box">
@@ -1331,20 +1266,17 @@ footer strong {
 </section>
 
 <!-- QR CODE -->
-
 <section class="qr-section reveal">
 
     <div class="section-title">
-
         <div class="label">Share Our Story</div>
 
         <h2>QR Code Keluarga ✨</h2>
 
         <p>
-            Masuk atau ubah alamat website di bawah
-            untuk memperbarui QR Code.
+            Masukkan alamat website keluarga untuk membuat
+            QR Code yang dapat dipindai.
         </p>
-
     </div>
 
     <div class="qr-card">
@@ -1352,7 +1284,7 @@ footer strong {
         <h3>Our Family QR 🤍</h3>
 
         <p>
-            Pindai QR Code di bawah untuk langsung membuka
+            Pindai QR Code di bawah untuk membuka
             website keluarga kita.
         </p>
 
@@ -1360,7 +1292,7 @@ footer strong {
             class="qr-input"
             id="qrText"
             type="url"
-            placeholder="https://kelurgatercinta.vercel.app"
+            placeholder="https://alamat-website-kalian.com"
             value="https://kelurgatercinta.vercel.app"
         >
 
@@ -1375,7 +1307,6 @@ footer strong {
 </section>
 
 <!-- FOOTER -->
-
 <footer>
 
     <p>
@@ -1394,18 +1325,14 @@ footer strong {
 </footer>
 
 <!-- LIBRARY QR CODE -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
-
-/* TAHUN OTOMATIS */
-
+// TAHUN OTOMATIS
 document.getElementById("year").textContent =
     new Date().getFullYear();
 
-/* ANIMASI SAAT SCROLL */
-
+// ANIMASI SAAT SCROLL
 const reveals = document.querySelectorAll(".reveal");
 
 const observer = new IntersectionObserver((entries) => {
@@ -1424,18 +1351,14 @@ const observer = new IntersectionObserver((entries) => {
 
 reveals.forEach(element => observer.observe(element));
 
-/* QR CODE */
-
+// QR CODE
 function buatQR() {
 
     const text = document.getElementById("qrText").value.trim();
-
     const container = document.getElementById("qrcode");
 
     if (!text) {
-
         alert("Masukkan alamat website terlebih dahulu!");
-
         return;
     }
 
@@ -1450,26 +1373,18 @@ function buatQR() {
     container.innerHTML = "";
 
     new QRCode(container, {
-
         text: text,
-
         width: 190,
-
         height: 190,
-
         colorDark: "#8c4567",
-
         colorLight: "#ffffff",
-
         correctLevel: QRCode.CorrectLevel.H
-
     });
 
 }
 
 // Jalankan otomatis saat halaman dimuat
 buatQR();
-
 </script>
 
 </body>
