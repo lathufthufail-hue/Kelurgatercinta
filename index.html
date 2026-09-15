@@ -1,0 +1,1475 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rumah Penuh Cinta | Keluarga Tercinta 🤍</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #594650;
+    background: #fff8fb;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 0% 0%, #ffd9e8, transparent 30%),
+        radial-gradient(circle at 100% 15%, #e5dcff, transparent 30%),
+        radial-gradient(circle at 50% 100%, #ffe8d8, transparent 35%),
+        #fff8fb;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .25;
+    background-image: radial-gradient(#d59ab5 1px, transparent 1px);
+    background-size: 28px 28px;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+section {
+    width: min(1120px, 92%);
+    margin: auto;
+    padding: 90px 0;
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    color: white;
+    background: linear-gradient(135deg, #e99bbb, #a95b88);
+    box-shadow: 0 10px 30px #b86c941f;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px #b86c9440;
+}
+
+/* BUNGA TERBANG */
+
+.floating {
+    position: fixed;
+    z-index: 5;
+    pointer-events: none;
+    font-size: 25px;
+    opacity: .65;
+    animation: float 6s ease-in-out infinite;
+}
+
+.f1 {
+    top: 15%;
+    left: 5%;
+}
+
+.f2 {
+    top: 48%;
+    right: 5%;
+    animation-delay: 2s;
+}
+
+.f3 {
+    bottom: 12%;
+    left: 12%;
+    animation-delay: 4s;
+}
+
+.f4 {
+    top: 70%;
+    right: 18%;
+    animation-delay: 1s;
+}
+
+.f5 {
+    top: 30%;
+    left: 45%;
+    animation-delay: 3s;
+}
+
+.f6 {
+    top: 85%;
+    right: 4%;
+    animation-delay: 5s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(15deg);
+    }
+}
+
+/* PEMBUKA */
+
+header {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero {
+    max-width: 850px;
+    animation: fadeUp 1.3s ease;
+}
+
+.hero-symbol {
+    font-size: 70px;
+    animation: heartbeat 2s infinite;
+}
+
+.label {
+    color: #b36d8e;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 82px);
+    line-height: 1.15;
+    color: #8d496b;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: #d17da3;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: #8b6c7a;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.hero .btn {
+    margin-top: 30px;
+}
+
+.scroll {
+    display: block;
+    margin-top: 40px;
+    color: #b26b8d;
+    font-size: 13px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+/* JUDUL */
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    color: #8d496b;
+    font-size: clamp(32px, 5vw, 48px);
+    margin: 12px 0;
+}
+
+.section-title p {
+    color: #917482;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* SUASANA KELUARGA */
+
+.atmosphere {
+    padding-top: 25px;
+}
+
+.atmosphere-box {
+    position: relative;
+    min-height: 480px;
+    border-radius: 35px;
+    overflow: hidden;
+    display: flex;
+    align-items: end;
+    background:
+        linear-gradient(to top, #4c304eaa, transparent 70%),
+        url("umiandabi1.jpeg") center/cover;
+    box-shadow: 0 25px 65px #9e63801e;
+}
+
+.atmosphere-content {
+    padding: 45px;
+    color: white;
+    max-width: 680px;
+}
+
+.atmosphere-content h2 {
+    font-size: clamp(30px, 5vw, 48px);
+    margin: 15px 0;
+}
+
+.atmosphere-content p {
+    font-size: 14px;
+    line-height: 2;
+}
+
+/* KOTAK ABI DAN UMMI */
+
+.family-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* KOTAK FOTO */
+
+.person-card {
+    position: relative;
+    padding: 18px;
+    text-align: center;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, .82);
+    border: 1px solid white;
+    box-shadow: 0 20px 55px rgba(183, 108, 155, .14);
+    backdrop-filter: blur(14px);
+    transition: .4s ease;
+}
+
+.person-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 28px 65px rgba(183, 108, 155, .25);
+}
+
+.person-card::before {
+    content: "🤍";
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    z-index: 3;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .9);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+}
+
+/* FOTO ESTETIK */
+
+.photo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    padding: 7px;
+    border-radius: 26px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f4bfd6, #d9c7f0, #f9d9c5);
+    box-shadow:
+        0 8px 25px rgba(173, 95, 135, .18),
+        inset 0 0 0 1px rgba(255, 255, 255, .7);
+}
+
+.photo::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    z-index: 2;
+    border: 2px solid rgba(255, 255, 255, .8);
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+    transition: .6s ease;
+}
+
+.person-card:hover .photo img {
+    transform: scale(1.08);
+    filter: brightness(1.05);
+}
+
+.person-card h3 {
+    color: #985475;
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+.role {
+    color: #c17d9b;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 7px;
+}
+
+.person-card p {
+    color: #8e7580;
+    font-size: 13px;
+    line-height: 1.9;
+    margin: 15px 5px 10px;
+}
+
+/* ANAK-ANAK */
+
+.children-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+/* KUTIPAN */
+
+.quote-box {
+    margin-top: 45px;
+    padding: 35px 25px;
+    text-align: center;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #fff, #fff0f6);
+    border: 1px solid #f2dce7;
+}
+
+.quote-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 29px);
+    line-height: 1.7;
+    color: #a05075;
+}
+
+.quote-box span {
+    display: block;
+    margin-top: 15px;
+    color: #c58aa4;
+    font-size: 13px;
+}
+
+/* GALERI 8 FOTO */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.gallery-card {
+    padding: 10px;
+    border-radius: 27px;
+    background: rgba(255, 255, 255, .85);
+    border: 1px solid white;
+    box-shadow: 0 15px 35px rgba(183, 108, 155, .13);
+    transition: .4s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-8px) rotate(.5deg);
+    box-shadow: 0 22px 45px rgba(183, 108, 155, .24);
+}
+
+.gallery-item {
+    position: relative;
+    aspect-ratio: 1 / 1.15;
+    overflow: hidden;
+    border-radius: 21px;
+    padding: 5px;
+    background: linear-gradient(135deg, #f5dce7, #eadff5);
+}
+
+.gallery-item::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    z-index: 2;
+    border: 2px solid rgba(255, 255, 255, .8);
+    border-radius: 16px;
+    pointer-events: none;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 16px;
+    transition: .6s ease;
+}
+
+.gallery-card:hover .gallery-item img {
+    transform: scale(1.1);
+}
+
+.gallery-item::after {
+    content: "🤍";
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 3;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .9);
+    font-size: 18px;
+}
+
+.gallery-caption {
+    padding: 15px 5px 8px;
+    text-align: center;
+}
+
+.gallery-caption h3 {
+    color: #985475;
+    font-size: 20px;
+}
+
+.gallery-caption p {
+    color: #a17d8e;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* PESAN KELUARGA */
+
+.message-section {
+    max-width: 880px;
+}
+
+.message-card {
+    padding: clamp(25px, 5vw, 60px);
+    background: rgba(255, 255, 255, .84);
+    border: 1px solid white;
+    border-radius: 35px;
+    box-shadow: 0 20px 60px rgba(183, 108, 155, .12);
+    backdrop-filter: blur(15px);
+}
+
+.envelope {
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.message-card h3 {
+    color: #985475;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.message-card p {
+    color: #745967;
+    font-size: 14px;
+    line-height: 2.2;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.closing {
+    text-align: center;
+    color: #a05075;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    line-height: 1.7;
+    margin-top: 30px;
+}
+
+/* KEGIATAN KELUARGA */
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.memory-card {
+    padding: 28px 20px;
+    text-align: center;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, .8);
+    border: 1px solid white;
+    box-shadow: 0 15px 35px rgba(183, 108, 155, .12);
+    transition: .3s;
+}
+
+.memory-card:hover {
+    transform: translateY(-7px);
+}
+
+.memory-card .icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.memory-card h3 {
+    color: #985475;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.memory-card p {
+    color: #8e7580;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* QR CODE */
+
+.qr-section {
+    text-align: center;
+}
+
+.qr-card {
+    max-width: 550px;
+    margin: auto;
+    padding: 35px 25px;
+    background: rgba(255, 255, 255, .85);
+    border: 1px solid white;
+    border-radius: 30px;
+    box-shadow: 0 15px 45px rgba(183, 108, 155, .12);
+}
+
+.qr-card h3 {
+    color: #985475;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.qr-card p {
+    color: #8c7280;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.qr-input {
+    width: 100%;
+    padding: 14px 18px;
+    margin-top: 20px;
+    border: 1px solid #edcbdc;
+    border-radius: 30px;
+    background: #fff8fb;
+    color: #76566a;
+    outline: none;
+    font-family: inherit;
+}
+
+#qrcode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px auto;
+    min-height: 210px;
+}
+
+#qrcode img {
+    padding: 12px;
+    background: white;
+    border: 6px solid #f8dce9;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(173, 95, 135, .15);
+}
+
+/* FOOTER */
+
+footer {
+    padding: 55px 20px;
+    text-align: center;
+    background: #f8e2eb;
+    color: #a26d87;
+    font-size: 13px;
+    line-height: 2;
+}
+
+footer strong {
+    color: #934b70;
+}
+
+/* ANIMASI */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .9s ease, transform .9s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 950px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .children-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .memory-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    section {
+        padding: 60px 0;
+    }
+
+    .family-grid,
+    .children-grid {
+        grid-template-columns: 1fr;
+        max-width: 390px;
+        margin: auto;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 13px;
+    }
+
+    .gallery-card {
+        padding: 7px;
+        border-radius: 20px;
+    }
+
+    .gallery-item {
+        border-radius: 15px;
+    }
+
+    .gallery-item img {
+        border-radius: 11px;
+    }
+
+    .gallery-caption h3 {
+        font-size: 16px;
+    }
+
+    .gallery-caption p {
+        font-size: 10px;
+    }
+
+    .atmosphere-box {
+        min-height: 420px;
+    }
+
+    .atmosphere-content {
+        padding: 28px;
+    }
+
+    .message-card p {
+        text-align: left;
+    }
+}
+
+@media (max-width: 360px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* REDUCE MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BUNGA TERBANG -->
+
+<div class="floating f1">🌸</div>
+<div class="floating f2">🤍</div>
+<div class="floating f3">✨</div>
+<div class="floating f4">🌷</div>
+<div class="floating f5">🌸</div>
+<div class="floating f6">💮</div>
+
+<!-- PEMBUKA -->
+
+<header>
+    <div class="hero">
+
+        <div class="hero-symbol">🏡</div>
+
+        <div class="label">Our Beautiful Family</div>
+
+        <h1>
+            Rumah Kecil,<br>
+            <span>Cinta Tak Terbatas</span>
+        </h1>
+
+        <p>
+            Keluarga adalah tempat pertama kita belajar mencintai,
+            tempat paling nyaman untuk pulang, dan hadiah terindah
+            yang Allah berikan dalam kehidupan kita. 🤍
+        </p>
+
+        <a href="#suasana" class="btn">
+            Masuk ke Cerita Kita ✨
+        </a>
+
+        <span class="scroll">
+            ↓ Gulir untuk melihat kenangan ↓
+        </span>
+
+    </div>
+</header>
+
+<!-- SUASANA KELUARGA -->
+
+<section id="suasana" class="atmosphere reveal">
+
+    <div class="section-title">
+        <div class="label">Warm Family Moments</div>
+
+        <h2>Suasana Rumah Kita</h2>
+
+        <p>
+            Kebahagiaan sering kali hadir dari hal-hal sederhana:
+            berkumpul, bercanda, dan saling menemani.
+        </p>
+    </div>
+
+    <div class="atmosphere-box">
+
+        <div class="atmosphere-content">
+
+            <div class="label" style="color:#ffe1ee;">
+                A Place Called Home
+            </div>
+
+            <h2>
+                Di sinilah cinta selalu pulang.
+            </h2>
+
+            <p>
+                Di ruang keluarga, ada cerita yang tidak pernah habis.
+                Ada tawa, ada nasihat, ada doa, dan ada banyak kenangan
+                yang akan selalu kita simpan di dalam hati.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABI DAN UMMI -->
+
+<section class="reveal">
+
+    <div class="section-title">
+
+        <div class="label">The Beginning of Everything</div>
+
+        <h2>Abi & Ummi 🤍</h2>
+
+        <p>
+            Dua sosok tercinta yang menjadi awal dari keluarga
+            penuh cinta ini.
+        </p>
+
+    </div>
+
+    <div class="family-grid">
+
+        <div class="person-card">
+
+            <div class="photo">
+                <img src="umiandabi1.jpeg" alt="Foto Abi dan Ummi">
+            </div>
+
+            <h3>Abi & Ummi</h3>
+
+            <div class="role">
+                The Heart of Our Family
+            </div>
+
+            <p>
+                Terima kasih telah menjadi sumber kekuatan,
+                pelindung, penguat, dan tempat ternyaman
+                untuk seluruh keluarga.
+            </p>
+
+        </div>
+
+        <div class="person-card">
+
+            <div class="photo">
+                <img src="fotokeluarga1.jpeg" alt="Foto Keluarga">
+            </div>
+
+            <h3>Keluarga Tercinta</h3>
+
+            <div class="role">
+                Our Beautiful Home
+            </div>
+
+            <p>
+                Bersama keluarga, setiap hari menjadi lebih
+                bermakna, hangat, dan penuh kebahagiaan.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="quote-box">
+
+        <p>
+            “Abi adalah kekuatan keluarga,
+            Ummi adalah kehangatan rumah,
+            dan kami adalah cerita cinta yang tumbuh
+            dari keduanya.”
+        </p>
+
+        <span>
+            Untuk Abi dan Ummi tercinta 🤍
+        </span>
+
+    </div>
+
+</section>
+
+<!-- ANAK-ANAK -->
+
+<section class="reveal">
+
+    <div class="section-title">
+
+        <div class="label">Our Little Stars</div>
+
+        <h2>Anak-Anak Kesayangan</h2>
+
+        <p>
+            Tiga hati yang membuat keluarga semakin lengkap
+            dan penuh warna.
+        </p>
+
+    </div>
+
+    <div class="children-grid">
+<!-- FOTO FOTO KAKAK AND ADIK -->
+        <div class="person-card">
+
+            <div class="photo">
+                <img src="saya.jpeg" alt="Foto Anak Pertama">
+            </div>
+
+            <h3>Anak Kedua</h3>
+            <h4>Thufail lathuf</h4>
+
+            <div class="role">
+                The First Love
+            </div>
+
+            <p>
+                Bagian awal dari cerita indah keluarga
+                yang selalu membawa kebahagiaan.
+            </p>
+
+        </div>
+
+
+        <div class="person-card">
+
+            <div class="photo">
+                <img src="kakak.jpeg" alt="Foto Kakak">
+            </div>
+
+            <h3>Anak Pertama</h3>
+               <h4>Tsabita Munira lathuf</h4>
+
+            <div class="role">
+                The Sweet Middle
+            </div>
+
+            <p>
+                Kakak yang membawa warna, tawa,
+                dan kebahagiaan di tengah keluarga.
+            </p>
+
+        </div>
+
+        <!-- ANAK KETIGA -->
+
+        <div class="person-card">
+
+            <div class="photo">
+                <img src="hudza.jpeg" alt="Foto Hudza">
+            </div>
+
+            <h3>Anak Ketiga</h3>
+               <h4>Hudzaifah lathuf</h4>
+
+            <div class="role">
+                The Little Sunshine
+            </div>
+
+            <p>
+                Kehadiran yang melengkapi cerita
+                keluarga tercinta.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- GALERI KELUARGA 8 FOTO -->
+
+<section class="reveal">
+
+    <div class="section-title">
+
+        <div class="label">Our Precious Memories</div>
+
+        <h2>Galeri Keluarga 🤍</h2>
+
+        <p>
+            Delapan foto indah yang menyimpan banyak
+            cerita dan kenangan berharga.
+        </p>
+
+    </div>
+
+    <div class="gallery">
+
+        <!-- FOTO 1 -->
+
+        <div class="gallery-card">
+
+            <div class="gallery-item">
+                <img src="fotokeluarga1.jpeg" alt="Foto Keluarga Pertama">
+            </div>
+
+            <div class="gallery-caption">
+                <h3>Waktu Bersama</h3>
+                <p>Kebersamaan yang hangat</p>
+            </div>
+
+        </div>
+
+        <!-- FOTO 2 -->
+
+        <div class="gallery-card">
+
+            <div class="gallery-item">
+                <img src="fotokeluarga2.jpeg" alt="Foto Keluarga Kedua">
+            </div>
+
+            <div class="gallery-caption">
+                <h3>Senyuman Kita</h3>
+                <p>Bahagia dalam kesederhanaan</p>
+            </div>
+
+        </div>
+
+        <!-- FOTO 3 -->
+
+        <div class="gallery-card">
+
+            <div class="gallery-item">
+                <img src="fotokeluarga3.jpeg" alt="Foto Keluarga Ketiga">
+            </div>
+
+            <div class="gallery-caption">
+                <h3>Kenangan Manis</h3>
+                <p>Disimpan di dalam hati</p>
+            </div>
+
+        </div>
+
+        <!-- FOTO 4 -->
+
+        <div class="gallery-card">
+
+            <div class="gallery-item">
+                <img src="fotokeluarga4.jpeg" alt="Foto Keluarga Keempat">
+            </div>
+
+            <div class="gallery-caption">
+                <h3>Waktu Bersama</h3>
+                <p>Selalu menjadi kenangan</p>
+            </div>
+
+        </div>
+
+        <!-- FOTO 5 -->
+
+        <div class="gallery-card">
+
+            <div class="gallery-item">
+                <img src="fotokeluarga5.jpeg" alt="Foto Keluarga Kelima">
+            </div>
+
+            <div class="gallery-caption">
+                <h3>Waktu Bersama</h3>
+                <p>Tawa yang tak terlupakan</p>
+            </div>
+
+        </div>
+
+        <!-- FOTO 6 -->
+
+        <div class="gallery-card">
+
+            <div class="gallery-item">
+                <img src="fotokeluarga6.jpeg" alt="Foto Keluarga Keenam">
+            </div>
+
+            <div class="gallery-caption">
+                <h3>Waktu Bersama</h3>
+                <p>Hangatnya keluarga</p>
+            </div>
+
+        </div>
+
+        <!-- FOTO 7 -->
+
+        <div class="gallery-card">
+
+            <div class="gallery-item">
+                <img src="fotokeluarga7.jpeg" alt="Foto Keluarga Ketujuh">
+            </div>
+
+            <div class="gallery-caption">
+                <h3>Memori Indah</h3>
+                <p>Disimpan selamanya</p>
+            </div>
+
+        </div>
+
+        <!-- FOTO 8 -->
+
+        <div class="gallery-card">
+
+            <div class="gallery-item">
+                <img src="fotokeluarga8.jpeg" alt="Foto Keluarga Kedelapan">
+            </div>
+
+            <div class="gallery-caption">
+                <h3>Keluarga Selamanya</h3>
+                <p>Cinta yang tidak berakhir</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PESAN UNTUK KELUARGA -->
+
+<section class="message-section reveal">
+
+    <div class="section-title">
+
+        <div class="label">From Our Hearts</div>
+
+        <h2>Pesan Untuk Keluarga 💌</h2>
+
+        <p>
+            Sebuah pesan sederhana dari hati
+            untuk orang-orang yang paling berarti.
+        </p>
+
+    </div>
+
+    <div class="message-card">
+
+        <div class="envelope">💌</div>
+
+        <h3>
+            Untuk Abi, Ummi, dan Keluarga Tercinta
+        </h3>
+
+        <p>
+            Terima kasih telah menjadi rumah yang paling nyaman
+            untuk kami. Terima kasih atas setiap pengorbanan,
+            doa, nasihat, dan kasih sayang yang tidak pernah
+            berhenti diberikan.
+        </p>
+
+        <p>
+            Abi, terima kasih telah menjadi sosok yang kuat,
+            pelindung keluarga, dan contoh tentang arti
+            tanggung jawab serta perjuangan. Setiap usaha
+            dan pengorbanan Abi akan selalu menjadi hal
+            yang sangat berharga bagi kami.
+        </p>
+
+        <p>
+            Ummi, terima kasih untuk kelembutan, perhatian,
+            kesabaran, dan doa-doa yang selalu mengiringi
+            setiap langkah kami. Kasih sayang Ummi membuat
+            rumah ini terasa hangat dan penuh kedamaian.
+        </p>
+
+        <p>
+            Untuk saudara-saudaraku, semoga kita selalu
+            saling menjaga, saling menyayangi, dan tetap
+            bersama meskipun kelak kita memiliki jalan
+            kehidupan masing-masing. Semoga tidak ada
+            jarak yang mampu menghilangkan rasa sayang
+            di antara kita.
+        </p>
+
+        <p>
+            Semoga Allah selalu memberikan kesehatan,
+            kebahagiaan, umur yang panjang, rezeki yang berkah,
+            dan melindungi keluarga kita di setiap langkah.
+            Semoga rumah ini selalu dipenuhi kedamaian,
+            tawa, dan cinta. Semoga kita selalu diberikan
+            kesempatan untuk berkumpul dan menciptakan
+            kenangan indah bersama.
+        </p>
+
+        <p>
+            Apa pun yang terjadi di masa depan, semoga
+            keluarga ini selalu menjadi tempat kita kembali.
+            Karena tidak ada hadiah yang lebih indah
+            daripada memiliki keluarga yang saling mencintai,
+            saling memahami, dan saling mendoakan.
+        </p>
+
+        <div class="closing">
+            “Keluarga bukan hanya tentang tinggal
+            di rumah yang sama, tetapi tentang
+            hati yang selalu ingin pulang
+            kepada satu sama lain.” 🤍
+            <br><br>
+            Dengan penuh cinta,<br>
+            Keluarga Tercinta 🌸
+        </div>
+
+    </div>
+
+</section>
+
+<!-- KEGIATAN KELUARGA -->
+
+<section class="reveal">
+
+    <div class="section-title">
+
+        <div class="label">Little Things, Big Happiness</div>
+
+        <h2>Suasana yang Kita Cintai</h2>
+
+        <p>
+            Momen-momen sederhana yang membuat keluarga
+            menjadi tempat paling istimewa.
+        </p>
+
+    </div>
+
+    <div class="memory-grid">
+
+        <div class="memory-card">
+
+            <div class="icon">🍽️</div>
+
+            <h3>Makan Bersama</h3>
+
+            <p>
+                Menikmati makanan sederhana sambil
+                berbagi cerita dan tawa bersama keluarga.
+            </p>
+
+        </div>
+
+        <div class="memory-card">
+
+            <div class="icon">🛋️</div>
+
+            <h3>Berkumpul di Rumah</h3>
+
+            <p>
+                Duduk bersama, berbincang, dan menikmati
+                suasana hangat di ruang keluarga.
+            </p>
+
+        </div>
+
+        <div class="memory-card">
+
+            <div class="icon">🌿</div>
+
+            <h3>Jalan-Jalan Bersama</h3>
+
+            <p>
+                Menciptakan kenangan baru melalui
+                perjalanan kecil yang penuh kebahagiaan.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PESAN PENUTUP TAMBAHAN -->
+
+<section class="reveal">
+
+    <div class="quote-box">
+
+        <p>
+            “Semoga rumah ini selalu menjadi tempat
+            yang dipenuhi doa, tawa, kesabaran,
+            dan cinta yang tidak pernah habis.”
+        </p>
+
+        <span>
+            Allahumma baarik fii usratinaa 🤍
+        </span>
+
+    </div>
+
+</section>
+
+<!-- QR CODE -->
+
+<section class="qr-section reveal">
+
+    <div class="section-title">
+
+        <div class="label">Share Our Story</div>
+
+        <h2>QR Code Keluarga ✨</h2>
+
+        <p>
+            Masukkan alamat website yang sudah online
+            untuk membuat QR Code yang bisa dipindai.
+        </p>
+
+    </div>
+
+    <div class="qr-card">
+
+        <h3>Our Family QR 🤍</h3>
+
+        <p>
+            QR Code akan mengarah ke alamat website
+            yang dimasukkan di bawah.
+        </p>
+
+        <input
+            class="qr-input"
+            id="qrText"
+            type="url"
+            placeholder="https://alamat-website-keluarga.com"
+            value=""
+        >
+
+        <div id="qrcode"></div>
+
+        <button class="btn" onclick="buatQR()">
+            Buat QR Code ✨
+        </button>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        Made with love for Abi, Ummi, and our family 🤍
+    </p>
+
+    <p>
+        © <span id="year"></span>
+        <strong>Keluarga Tercinta</strong>
+    </p>
+
+    <p>
+        “Rumah terbaik adalah tempat hati merasa diterima.”
+    </p>
+
+</footer>
+
+<!-- LIBRARY QR CODE -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+
+/* TAHUN OTOMATIS */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+/* ANIMASI SAAT SCROLL */
+
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+
+    });
+
+}, {
+    threshold: 0.12
+});
+
+reveals.forEach(element => observer.observe(element));
+
+/* QR CODE */
+
+function buatQR() {
+
+    const text = document.getElementById("qrText").value.trim();
+
+    const container = document.getElementById("qrcode");
+
+    if (!text) {
+
+        alert("Masukkan alamat website terlebih dahulu!");
+
+        return;
+    }
+
+    if (typeof QRCode === "undefined") {
+
+        container.innerHTML =
+            "<p>QR Code membutuhkan koneksi internet untuk memuat library.</p>";
+
+        return;
+    }
+
+    container.innerHTML = "";
+
+    new QRCode(container, {
+
+        text: text,
+
+        width: 190,
+
+        height: 190,
+
+        colorDark: "#8c4567",
+
+        colorLight: "#ffffff",
+
+        correctLevel: QRCode.CorrectLevel.H
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
