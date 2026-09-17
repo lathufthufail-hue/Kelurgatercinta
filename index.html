@@ -1,12 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rumah Penuh Cinta | Keluarga dalam Doa 🤍</title>
+<title>Rumah Penuh Cinta | Keluarga dalam Doa 🩵</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Library Canvas Confetti untuk Efek Kembang Api -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
 * {
@@ -21,21 +22,120 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    color: #594650;
-    background: #fff8fb;
+    color: #2c4a6f;
+    background: #f0f7ff;
     overflow-x: hidden;
 }
 
+body.locked {
+    overflow: hidden;
+}
+
+/* OVERLAY MODAL PASSWORD */
+#loginOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(224, 242, 254, 0.95);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loginOverlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #bbe3fe;
+    padding: 40px 30px;
+    border-radius: 35px;
+    box-shadow: 0 20px 60px rgba(56, 149, 214, 0.2);
+    text-align: center;
+    max-width: 460px;
+    width: 100%;
+}
+
+.login-card .icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+    animation: pulse 2s infinite;
+}
+
+.login-card h2 {
+    color: #0f4c81;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.login-card p.instruction {
+    color: #0284c7;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    background: #e0f2fe;
+    padding: 12px;
+    border-radius: 15px;
+}
+
+.login-input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #bbe3fe;
+    border-radius: 30px;
+    background: #f4f9ff;
+    color: #1e4775;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.login-input:focus {
+    border-color: #38bdf8;
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+.error-msg {
+    color: #d97706;
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    font-size: 13px;
+    padding: 12px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    display: none;
+    line-height: 1.5;
+}
+
+.welcome-msg {
+    color: #0284c7;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+/* BACKGROUND GRADIENT BIRU LANGIT & BIRU MUDA */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -2;
     background:
-        radial-gradient(circle at 0% 0%, #ffd9e8, transparent 30%),
-        radial-gradient(circle at 100% 15%, #e5dcff, transparent 30%),
-        radial-gradient(circle at 50% 100%, #ffe8d8, transparent 35%),
-        #fff8fb;
+        radial-gradient(circle at 10% 10%, #bae6fd, transparent 40%),
+        radial-gradient(circle at 90% 20%, #e0f2fe, transparent 40%),
+        radial-gradient(circle at 50% 90%, #7dd3fc, transparent 45%),
+        #f0f7ff;
 }
 
 body::after {
@@ -44,18 +144,16 @@ body::after {
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    opacity: .25;
-    background-image: radial-gradient(#d59ab5 1px, transparent 1px);
-    background-size: 28px 28px;
+    opacity: 0.3;
+    background-image: radial-gradient(#38bdf8 1.2px, transparent 1.2px);
+    background-size: 32px 32px;
 }
 
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
 }
 
-a {
-    text-decoration: none;
-}
+a { text-decoration: none; }
 
 section {
     width: min(1120px, 92%);
@@ -66,82 +164,67 @@ section {
 .btn {
     display: inline-block;
     border: none;
-    padding: 15px 30px;
+    padding: 16px 36px;
     border-radius: 50px;
     color: white;
-    background: linear-gradient(135deg, #e99bbb, #a95b88);
-    box-shadow: 0 10px 30px #b86c941f;
+    background: linear-gradient(135deg, #38bdf8, #0284c7);
+    box-shadow: 0 10px 28px rgba(2, 132, 199, 0.3);
     font-family: inherit;
     font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s ease;
 }
 
 .btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px #b86c9440;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(2, 132, 199, 0.45);
+    background: linear-gradient(135deg, #7dd3fc, #0369a1);
 }
 
-/* BUNGA TERBANG */
+.btn-surprise {
+    margin-top: 30px;
+    font-size: 16px;
+    padding: 18px 42px;
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    animation: pulse 2s infinite;
+}
+
+.btn-surprise:hover {
+    transform: translateY(-5px) scale(1.03);
+}
+
 .floating {
     position: fixed;
     z-index: 5;
     pointer-events: none;
-    font-size: 25px;
-    opacity: .72;
-    animation: flyFlower 14s linear infinite;
+    font-size: 24px;
+    opacity: .75;
+    animation: flyCloud 16s linear infinite;
     will-change: transform, opacity;
 }
 
-.f1 { top: 105%; left: 4%; animation-delay: -2s; }
-.f2 { top: 85%; right: 8%; animation-delay: -8s; }
-.f3 { top: 115%; left: 25%; animation-delay: -12s; }
-.f4 { top: 95%; right: 28%; animation-delay: -5s; }
-.f5 { top: 110%; left: 62%; animation-delay: -15s; }
-.f6 { top: 100%; right: 2%; animation-delay: -10s; }
-.f7 { top: 108%; left: 40%; animation-delay: -6s; }
-.f8 { top: 120%; right: 35%; animation-delay: -18s; }
-.f9 { top: 102%; left: 78%; animation-delay: -13s; }
-.f10 { top: 112%; right: 18%; animation-delay: -3s; }
+.f1 { top: 105%; left: 5%; animation-delay: -2s; }
+.f2 { top: 85%; right: 7%; animation-delay: -9s; }
+.f3 { top: 115%; left: 22%; animation-delay: -14s; }
+.f4 { top: 95%; right: 25%; animation-delay: -6s; }
+.f5 { top: 110%; left: 65%; animation-delay: -16s; }
+.f6 { top: 100%; right: 3%; animation-delay: -11s; }
+.f7 { top: 108%; left: 42%; animation-delay: -7s; }
+.f8 { top: 120%; right: 38%; animation-delay: -19s; }
+.f9 { top: 102%; left: 80%; animation-delay: -13s; }
+.f10 { top: 112%; right: 15%; animation-delay: -4s; }
 
-@keyframes flyFlower {
-    0% {
-        transform: translate3d(0, 15vh, 0)
-                   rotate(0deg) scale(.75);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: .72;
-    }
-
-    25% {
-        transform: translate3d(12vw, -20vh, 0)
-                   rotate(80deg) scale(1);
-    }
-
-    50% {
-        transform: translate3d(-10vw, -48vh, 0)
-                   rotate(180deg) scale(.85);
-    }
-
-    75% {
-        transform: translate3d(16vw, -78vh, 0)
-                   rotate(270deg) scale(1.1);
-    }
-
-    90% {
-        opacity: .5;
-    }
-
-    100% {
-        transform: translate3d(-8vw, -120vh, 0)
-                   rotate(360deg) scale(.7);
-        opacity: 0;
-    }
+@keyframes flyCloud {
+    0% { transform: translate3d(0, 15vh, 0) rotate(0deg) scale(.8); opacity: 0; }
+    10% { opacity: .75; }
+    25% { transform: translate3d(10vw, -20vh, 0) rotate(15deg) scale(1); }
+    50% { transform: translate3d(-8vw, -50vh, 0) rotate(-10deg) scale(.9); }
+    75% { transform: translate3d(12vw, -80vh, 0) rotate(20deg) scale(1.1); }
+    90% { opacity: .5; }
+    100% { transform: translate3d(-5vw, -125vh, 0) rotate(0deg) scale(.7); opacity: 0; }
 }
 
-/* PEMBUKA */
 header {
     min-height: 100vh;
     display: flex;
@@ -157,14 +240,14 @@ header {
 }
 
 .hero-symbol {
-    font-size: 70px;
-    animation: heartbeat 2s infinite;
+    font-size: 75px;
+    animation: pulse 2.5s infinite;
 }
 
 .label {
-    color: #b36d8e;
+    color: #0284c7;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 4px;
     text-transform: uppercase;
 }
@@ -172,97 +255,56 @@ header {
 .hero h1 {
     font-size: clamp(42px, 7vw, 82px);
     line-height: 1.15;
-    color: #8d496b;
+    color: #0f4c81;
     margin: 20px 0;
 }
 
-.hero h1 span {
-    color: #d17da3;
-}
+.hero h1 span { color: #38bdf8; }
 
 .hero p {
     max-width: 650px;
     margin: auto;
-    color: #8b6c7a;
-    font-size: 15px;
+    color: #47709b;
+    font-size: 15.5px;
     line-height: 2;
 }
 
-.hero .btn {
-    margin-top: 30px;
-}
+.hero .btn { margin-top: 35px; }
 
 .scroll {
     display: block;
     margin-top: 40px;
-    color: #b26b8d;
+    color: #0284c7;
     font-size: 13px;
+    font-weight: 500;
     animation: bounce 2s infinite;
 }
 
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    15% { transform: scale(1.15); }
-    30% { transform: scale(1); }
-}
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes bounce { 50% { transform: translateY(8px); } }
 
-@keyframes bounce {
-    50% { transform: translateY(8px); }
-}
-
-/* JUDUL */
-.section-title {
-    text-align: center;
-    margin-bottom: 45px;
-}
-
-.section-title h2 {
-    color: #8d496b;
-    font-size: clamp(32px, 5vw, 48px);
-    margin: 12px 0;
-}
-
-.section-title p {
-    color: #917482;
-    font-size: 14px;
-    line-height: 1.9;
-}
-
-/* SUASANA */
-.atmosphere {
-    padding-top: 25px;
-}
+.section-title { text-align: center; margin-bottom: 45px; }
+.section-title h2 { color: #0f4c81; font-size: clamp(32px, 5vw, 48px); margin: 12px 0; }
+.section-title p { color: #5582b0; font-size: 14.5px; line-height: 1.9; }
 
 .atmosphere-box {
     position: relative;
     min-height: 480px;
-    border-radius: 35px;
+    border-radius: 40px;
     overflow: hidden;
     display: flex;
     align-items: end;
     background:
-        linear-gradient(to top, #4c304eaa, transparent 70%),
+        linear-gradient(to top, rgba(15, 76, 129, 0.85), transparent 70%),
         url("umiandabi1.jpeg") center/cover;
-    box-shadow: 0 25px 65px #9e63801e;
+    box-shadow: 0 25px 65px rgba(2, 132, 199, 0.2);
+    border: 2px solid #ffffff;
 }
 
-.atmosphere-content {
-    padding: 45px;
-    color: white;
-    max-width: 680px;
-}
+.atmosphere-content { padding: 45px; color: white; max-width: 680px; }
+.atmosphere-content h2 { font-size: clamp(30px, 5vw, 48px); margin: 15px 0; }
+.atmosphere-content p { font-size: 14.5px; line-height: 2; color: #e0f2fe; }
 
-.atmosphere-content h2 {
-    font-size: clamp(30px, 5vw, 48px);
-    margin: 15px 0;
-}
-
-.atmosphere-content p {
-    font-size: 14px;
-    line-height: 2;
-}
-
-/* KARTU FOTO */
 .family-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -273,57 +315,56 @@ header {
 
 .person-card {
     position: relative;
-    padding: 18px;
+    padding: 20px;
     text-align: center;
-    border-radius: 32px;
-    background: rgba(255, 255, 255, .82);
-    border: 1px solid white;
-    box-shadow: 0 20px 55px rgba(183, 108, 155, .14);
+    border-radius: 35px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid #ffffff;
+    box-shadow: 0 20px 50px rgba(56, 189, 248, 0.15);
     backdrop-filter: blur(14px);
-    transition: .4s ease;
+    transition: 0.4s ease;
 }
 
 .person-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 28px 65px rgba(183, 108, 155, .25);
+    box-shadow: 0 28px 65px rgba(2, 132, 199, 0.25);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .person-card::before {
-    content: "🤍";
+    content: "🩵";
     position: absolute;
-    top: 12px;
-    right: 15px;
+    top: 15px;
+    right: 18px;
     z-index: 3;
-    width: 35px;
-    height: 35px;
+    width: 36px;
+    height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background: rgba(255, 255, 255, .9);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+    background: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .photo {
     position: relative;
     width: 100%;
     aspect-ratio: 4 / 5;
-    padding: 7px;
-    border-radius: 26px;
+    padding: 8px;
+    border-radius: 28px;
     overflow: hidden;
-    background: linear-gradient(135deg, #f4bfd6, #d9c7f0, #f9d9c5);
-    box-shadow:
-        0 8px 25px rgba(173, 95, 135, .18),
-        inset 0 0 0 1px rgba(255, 255, 255, .7);
+    background: linear-gradient(135deg, #bae6fd, #e0f2fe, #7dd3fc);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
 .photo::before {
     content: "";
     position: absolute;
-    inset: 7px;
+    inset: 8px;
     z-index: 2;
-    border: 2px solid rgba(255, 255, 255, .8);
-    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    border-radius: 22px;
     pointer-events: none;
 }
 
@@ -334,75 +375,48 @@ header {
     object-fit: cover;
     object-position: center;
     border-radius: 20px;
-    transition: .6s ease;
+    transition: 0.6s ease;
 }
 
-.person-card:hover .photo img {
-    transform: scale(1.08);
-    filter: brightness(1.05);
-}
+.person-card:hover .photo img { transform: scale(1.08); }
+.person-card h3 { color: #0f4c81; font-size: 26px; margin-top: 22px; }
+.person-card h4 { color: #0284c7; font-size: 15px; margin-top: 6px; font-weight: 600; }
+.role { color: #38bdf8; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-top: 8px; }
+.person-card p { color: #47709b; font-size: 13.5px; line-height: 1.9; margin: 15px 5px 10px; }
 
-.person-card h3 {
-    color: #985475;
-    font-size: 28px;
-    margin-top: 20px;
-}
-
-.person-card h4 {
-    color: #b36d8e;
-    font-size: 15px;
-    margin-top: 8px;
-    font-weight: 600;
-}
-
-.role {
-    color: #c17d9b;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-top: 7px;
-}
-
-.person-card p {
-    color: #8e7580;
-    font-size: 13px;
-    line-height: 1.9;
-    margin: 15px 5px 10px;
-}
-
-/* ANAK-ANAK */
 .children-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
 }
 
-/* KUTIPAN */
 .quote-box {
-    margin-top: 45px;
-    padding: 35px 25px;
+    margin-top: 50px;
+    padding: 40px 30px;
     text-align: center;
-    border-radius: 28px;
-    background: linear-gradient(135deg, #fff, #fff0f6);
-    border: 1px solid #f2dce7;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ffffff, #e0f2fe);
+    border: 2px solid #bae6fd;
+    box-shadow: 0 15px 40px rgba(56, 189, 248, 0.12);
 }
 
 .quote-box p {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(20px, 3vw, 29px);
+    font-size: clamp(20px, 3vw, 28px);
     line-height: 1.7;
-    color: #a05075;
+    color: #0f4c81;
+    font-style: italic;
 }
 
 .quote-box span {
     display: block;
-    margin-top: 15px;
-    color: #c58aa4;
-    font-size: 13px;
+    margin-top: 16px;
+    color: #0284c7;
+    font-size: 13.5px;
+    font-weight: 600;
 }
 
-/* GALERI */
+/* GALERI DENGAN GRID 4 KOLOM */
 .gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -410,36 +424,26 @@ header {
 }
 
 .gallery-card {
-    padding: 10px;
-    border-radius: 27px;
-    background: rgba(255, 255, 255, .85);
-    border: 1px solid white;
-    box-shadow: 0 15px 35px rgba(183, 108, 155, .13);
-    transition: .4s ease;
+    padding: 12px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ffffff;
+    box-shadow: 0 15px 35px rgba(56, 189, 248, 0.12);
+    transition: 0.4s ease;
 }
 
 .gallery-card:hover {
-    transform: translateY(-8px) rotate(.5deg);
-    box-shadow: 0 22px 45px rgba(183, 108, 155, .24);
+    transform: translateY(-8px) rotate(0.5deg);
+    box-shadow: 0 25px 50px rgba(2, 132, 199, 0.25);
 }
 
 .gallery-item {
     position: relative;
     aspect-ratio: 1 / 1.15;
     overflow: hidden;
-    border-radius: 21px;
+    border-radius: 20px;
     padding: 5px;
-    background: linear-gradient(135deg, #f5dce7, #eadff5);
-}
-
-.gallery-item::before {
-    content: "";
-    position: absolute;
-    inset: 5px;
-    z-index: 2;
-    border: 2px solid rgba(255, 255, 255, .8);
-    border-radius: 16px;
-    pointer-events: none;
+    background: linear-gradient(135deg, #bae6fd, #e0f2fe);
 }
 
 .gallery-item img {
@@ -449,164 +453,186 @@ header {
     object-fit: cover;
     object-position: center;
     border-radius: 16px;
-    transition: .6s ease;
+    transition: 0.6s ease;
 }
 
-.gallery-card:hover .gallery-item img {
-    transform: scale(1.1);
-}
+.gallery-caption { padding: 15px 5px 8px; text-align: center; }
+.gallery-caption h3 { color: #0f4c81; font-size: 19px; }
+.gallery-caption p { color: #5582b0; font-size: 12px; margin-top: 4px; }
 
-.gallery-item::after {
-    content: "🤍";
-    position: absolute;
-    right: 12px;
-    bottom: 12px;
-    z-index: 3;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, .9);
-    font-size: 18px;
-}
-
-.gallery-caption {
-    padding: 15px 5px 8px;
-    text-align: center;
-}
-
-.gallery-caption h3 {
-    color: #985475;
-    font-size: 20px;
-}
-
-.gallery-caption p {
-    color: #a17d8e;
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-/* PESAN KELUARGA */
-.message-section {
-    max-width: 880px;
-}
-
+/* PESAN KELUARGA & KEGIATAN */
 .message-card {
-    padding: clamp(25px, 5vw, 60px);
-    background: rgba(255, 255, 255, .84);
-    border: 1px solid white;
-    border-radius: 35px;
-    box-shadow: 0 20px 60px rgba(183, 108, 155, .12);
-    backdrop-filter: blur(15px);
+    padding: clamp(30px, 5vw, 65px);
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ffffff;
+    border-radius: 40px;
+    box-shadow: 0 25px 65px rgba(56, 189, 248, 0.15);
 }
 
-.envelope {
-    text-align: center;
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-.message-card h3 {
-    color: #985475;
-    font-size: 30px;
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.message-card p {
-    color: #745967;
-    font-size: 14px;
-    line-height: 2.2;
-    margin-bottom: 20px;
-    text-align: justify;
-}
+.envelope { text-align: center; font-size: 52px; margin-bottom: 20px; }
+.message-card h3 { color: #0f4c81; font-size: 32px; text-align: center; margin-bottom: 25px; }
+.message-card p { color: #335c85; font-size: 14.5px; line-height: 2.2; margin-bottom: 20px; text-align: justify; }
 
 .closing {
     text-align: center;
-    color: #a05075;
+    color: #0284c7;
     font-family: 'Playfair Display', serif;
     font-size: 22px;
     line-height: 1.7;
-    margin-top: 30px;
+    margin-top: 35px;
 }
 
-/* KEGIATAN */
 .memory-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+    gap: 28px;
 }
 
 .memory-card {
-    padding: 28px 20px;
+    padding: 30px 22px;
     text-align: center;
-    border-radius: 25px;
-    background: rgba(255, 255, 255, .8);
-    border: 1px solid white;
-    box-shadow: 0 15px 35px rgba(183, 108, 155, .12);
-    transition: .3s;
+    border-radius: 35px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid #ffffff;
+    box-shadow: 0 20px 50px rgba(56, 189, 248, 0.12);
+    transition: 0.4s ease;
 }
 
 .memory-card:hover {
-    transform: translateY(-7px);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(2, 132, 199, 0.22);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .memory-card .icon {
-    font-size: 42px;
+    font-size: 45px;
     margin-bottom: 15px;
 }
 
 .memory-card h3 {
-    color: #985475;
-    font-size: 23px;
+    color: #0f4c81;
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
 .memory-card p {
-    color: #8e7580;
-    font-size: 13px;
+    color: #47709b;
+    font-size: 13.5px;
     line-height: 1.9;
 }
 
-/* QR CODE */
-.qr-section {
+/* AREA KEJUTAN (ASAP, UCAPAN MERIAH & QR CODE) */
+#surpriseArea {
+    display: none;
+    opacity: 0;
+    transform: scale(0.92);
+    transition: all 1s ease;
+    margin-top: 60px;
+}
+
+#surpriseArea.show-surprise {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* DESAIN KARTU UCAPAN TERIMA KASIH MERIAH & BESAR */
+.thank-you-card {
+    padding: clamp(45px, 6vw, 85px) clamp(25px, 4vw, 50px);
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #bae6fd 100%);
+    border: 4px solid #38bdf8;
+    border-radius: 50px;
+    box-shadow: 0 30px 80px rgba(2, 132, 199, 0.35), inset 0 0 30px rgba(255, 255, 255, 0.8);
     text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.thank-you-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 6vw, 65px);
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #0f4c81, #0284c7, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+    animation: festivePulse 2s ease-in-out infinite;
+}
+
+.thank-you-card p {
+    color: #1e4775;
+    font-size: clamp(17px, 2.5vw, 22px);
+    font-weight: 500;
+    line-height: 2;
+    max-width: 820px;
+    margin: 0 auto 30px;
+}
+
+.thank-you-card .icons-festive {
+    font-size: clamp(40px, 6vw, 60px);
+    animation: bounce 2s infinite;
+}
+
+@keyframes festivePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+}
+
+/* EFEK ASAP */
+.smoke-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+    display: none;
+}
+
+.smoke-cloud {
+    position: absolute;
+    bottom: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(224, 242, 254, 0.85) 0%, rgba(186, 230, 253, 0.45) 50%, transparent 80%);
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: riseUp 5s ease-out forwards;
+}
+
+@keyframes riseUp {
+    0% { transform: translateY(0) scale(0.8); opacity: 0; }
+    30% { opacity: 0.85; }
+    100% { transform: translateY(-110vh) scale(3.5); opacity: 0; }
 }
 
 .qr-card {
     max-width: 550px;
     margin: auto;
-    padding: 35px 25px;
-    background: rgba(255, 255, 255, .85);
-    border: 1px solid white;
-    border-radius: 30px;
-    box-shadow: 0 15px 45px rgba(183, 108, 155, .12);
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ffffff;
+    border-radius: 35px;
+    box-shadow: 0 20px 50px rgba(56, 189, 248, 0.15);
+    text-align: center;
 }
 
-.qr-card h3 {
-    color: #985475;
-    font-size: 28px;
-    margin-bottom: 12px;
-}
-
-.qr-card p {
-    color: #8c7280;
-    font-size: 13px;
-    line-height: 1.8;
-}
+.qr-card h3 { color: #0f4c81; font-size: 28px; margin-bottom: 12px; }
+.qr-card p { color: #5582b0; font-size: 13.5px; line-height: 1.8; }
 
 .qr-input {
     width: 100%;
-    padding: 14px 18px;
+    padding: 15px 20px;
     margin-top: 20px;
-    border: 1px solid #edcbdc;
+    border: 2px solid #bae6fd;
     border-radius: 30px;
-    background: #fff8fb;
-    color: #76566a;
+    background: #f0f7ff;
+    color: #1e4775;
     outline: none;
     font-family: inherit;
+    text-align: center;
 }
 
 #qrcode {
@@ -618,28 +644,23 @@ header {
 }
 
 #qrcode img {
-    padding: 12px;
+    padding: 14px;
     background: white;
-    border: 6px solid #f8dce9;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(173, 95, 135, .15);
+    border: 5px solid #bae6fd;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15);
 }
 
-/* FOOTER */
 footer {
-    padding: 55px 20px;
+    padding: 60px 20px;
     text-align: center;
-    background: #f8e2eb;
-    color: #a26d87;
-    font-size: 13px;
+    background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+    color: #1e4775;
+    font-size: 13.5px;
     line-height: 2;
+    border-top: 2px solid #ffffff;
 }
 
-footer strong {
-    color: #934b70;
-}
-
-/* ANIMASI */
 .reveal {
     opacity: 0;
     transform: translateY(35px);
@@ -652,238 +673,142 @@ footer strong {
 }
 
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-    .gallery {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 950px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .children-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .memory-grid {
-        grid-template-columns: 1fr;
-    }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .children-grid, .memory-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 650px) {
-    section {
-        padding: 60px 0;
-    }
-
-    .family-grid,
-    .children-grid {
-        grid-template-columns: 1fr;
-        max-width: 390px;
-        margin: auto;
-    }
-
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 13px;
-    }
-
-    .gallery-card {
-        padding: 7px;
-        border-radius: 20px;
-    }
-
-    .gallery-item {
-        border-radius: 15px;
-    }
-
-    .gallery-item img {
-        border-radius: 11px;
-    }
-
-    .gallery-caption h3 {
-        font-size: 16px;
-    }
-
-    .gallery-caption p {
-        font-size: 10px;
-    }
-
-    .atmosphere-box {
-        min-height: 420px;
-    }
-
-    .atmosphere-content {
-        padding: 28px;
-    }
-
-    .message-card p {
-        text-align: left;
-    }
-}
-
-@media (max-width: 360px) {
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-    }
+    section { padding: 60px 0; }
+    .family-grid, .children-grid, .memory-grid { grid-template-columns: 1fr; max-width: 390px; margin: auto; }
+    .gallery { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .atmosphere-box { min-height: 420px; }
+    .atmosphere-content { padding: 28px; }
 }
 </style>
 </head>
 
-<body>
+<body class="locked">
 
-<!-- BUNGA TERBANG -->
-<div class="floating f1">🌸</div>
-<div class="floating f2">🤍</div>
+<!-- OVERLAY LOGIN PASSWORD -->
+<div id="loginOverlay">
+    <div class="login-card">
+        <div class="welcome-msg">WELCOME FAMILY LATHUF</div>
+        <div class="icon">🩵</div>
+        <h2>Akses Keluarga Lathuf</h2>
+        <p class="instruction">
+            Jika kamu memang benar dari keluarga Lathuf, silakan tulis nama panjang kamu ✨
+        </p>
+        <input 
+            type="text" 
+            id="passwordInput" 
+            class="login-input" 
+            placeholder="Ketik nama panjang kamu..." 
+            onkeypress="handleEnter(event)"
+        >
+        <div id="errorMsg" class="error-msg">
+            Jika kamu bukan anggota keluarga Lathuf, silakan minta izin atau tanyakan kata sandinya ke orang yang berada di keluarga itu. 🙏
+        </div>
+        <button class="btn" onclick="checkAccess()">Masuk Website ✨</button>
+    </div>
+</div>
+
+<!-- CONTAINER EFEK ASAP -->
+<div id="smokeContainer" class="smoke-container"></div>
+
+<!-- ORNAMEN TERBANG -->
+<div class="floating f1">☁️</div>
+<div class="floating f2">🩵</div>
 <div class="floating f3">✨</div>
-<div class="floating f4">🌷</div>
-<div class="floating f5">🌸</div>
-<div class="floating f6">💮</div>
-<div class="floating f7">🌼</div>
-<div class="floating f8">🌺</div>
-<div class="floating f9">🌸</div>
+<div class="floating f4">🕊️</div>
+<div class="floating f5">☁️</div>
+<div class="floating f6">⭐</div>
+<div class="floating f7">🔹</div>
+<div class="floating f8">🩵</div>
+<div class="floating f9">☁️</div>
 <div class="floating f10">✨</div>
 
-<!-- PEMBUKA -->
-<header>
+<!-- HERO SECTION -->
+<header id="top">
     <div class="hero">
         <div class="hero-symbol">🏡</div>
-
-        <div class="label">Our Beautiful Family</div>
-
+        <div class="label">Welcome To Our Paradise</div>
         <h1>
             Rumah Penuh Cinta,<br>
             <span>Keluarga dalam Doa</span>
         </h1>
-
         <p>
             Keluarga adalah nikmat terindah dari Allah;
             tempat hati belajar mencintai, tempat lelah menemukan
             ketenangan, dan tempat setiap doa tumbuh menjadi
-            harapan yang indah. 🤍
+            harapan yang indah. 🩵
         </p>
-
-        <a href="#suasana" class="btn">
-            Masuk ke Cerita Kita ✨
-        </a>
-
-        <span class="scroll">
-            ↓ Gulir untuk melihat kenangan ↓
-        </span>
+        <a href="#suasana" class="btn">Masuk ke Cerita Kita ✨</a>
+        <span class="scroll">↓ Gulir untuk melihat kenangan ↓</span>
     </div>
 </header>
 
 <!-- SUASANA KELUARGA -->
 <section id="suasana" class="atmosphere reveal">
-
     <div class="section-title">
         <div class="label">Warm Family Moments</div>
-
         <h2>Suasana Rumah Kita</h2>
-
         <p>
             Kebahagiaan sering kali hadir dari hal-hal sederhana:
             berkumpul, bercanda, dan saling menemani.
         </p>
     </div>
-
     <div class="atmosphere-box">
         <div class="atmosphere-content">
-
-            <div class="label" style="color:#ffe1ee;">
-                A Place Called Home
-            </div>
-
-            <h2>
-                Di sinilah cinta selalu pulang.
-            </h2>
-
+            <div class="label" style="color:#e0f2fe;">A Place Called Home</div>
+            <h2>Di sinilah cinta selalu pulang.</h2>
             <p>
                 Di ruang keluarga, ada cerita yang tidak pernah habis.
                 Ada tawa, ada nasihat, ada doa, dan ada banyak kenangan
                 yang akan selalu kita simpan di dalam hati.
             </p>
-
         </div>
     </div>
-
 </section>
 
 <!-- ABI DAN UMMI -->
 <section class="reveal">
-
     <div class="section-title">
         <div class="label">The Beginning of Everything</div>
-
-        <h2>Abi & Ummi 🤍</h2>
-
+        <h2>Abi & Ummi 🩵</h2>
         <p>
             Dua sosok tercinta yang menjadi awal dari keluarga
             penuh cinta ini.
         </p>
     </div>
-
     <div class="family-grid">
-
         <div class="person-card">
             <div class="photo">
                 <img src="umiandabi1.jpeg" alt="Foto Abi dan Ummi">
             </div>
-
-            <h3>Abi & Ummi</h3>
-
-            <div class="role">
-                The Heart of Our Family
-            </div>
-
+            <h3>Agus Umbarno & Sulami</h3>
+            <div class="role">Abi & Ummi Tercinta</div>
             <p>
                 Terima kasih telah menjadi sumber kekuatan,
                 pelindung, penguat, dan tempat ternyaman
                 untuk seluruh keluarga.
             </p>
         </div>
-
         <div class="person-card">
             <div class="photo">
                 <img src="fotokeluarga1.jpeg" alt="Foto Keluarga">
             </div>
-
-            <h3>Keluarga Tercinta</h3>
-
-            <div class="role">
-                Our Beautiful Home
-            </div>
-
+            <h3>Keluarga Lathuf</h3>
+            <div class="role">Our Beautiful Home</div>
             <p>
                 Bersama keluarga, setiap hari menjadi lebih
                 bermakna, hangat, dan penuh kebahagiaan.
             </p>
         </div>
-
     </div>
 
     <div class="quote-box">
@@ -893,22 +818,15 @@ footer strong {
             dan kami adalah cerita cinta yang tumbuh
             dari keduanya.”
         </p>
-
-        <span>
-            Untuk Abi dan Ummi tercinta 🤍
-        </span>
+        <span>Untuk Abi dan Ummi tercinta 🩵</span>
     </div>
-
 </section>
 
 <!-- ANAK-ANAK -->
 <section class="reveal">
-
     <div class="section-title">
         <div class="label">Our Little Stars</div>
-
         <h2>Anak-Anak Kesayangan</h2>
-
         <p>
             Tiga hati yang membuat keluarga semakin lengkap
             dan penuh warna.
@@ -916,93 +834,55 @@ footer strong {
     </div>
 
     <div class="children-grid">
-
-        <!-- ANAK PERTAMA -->
         <div class="person-card">
-
             <div class="photo">
                 <img src="foto kakak 2.jpeg" alt="Foto Kakak">
             </div>
-
             <h3>Anak Pertama</h3>
             <h4>Tsabita Munira Laththuf</h4>
-
-            <div class="role">
-                The First Love
-            </div>
-
+            <div class="role">The First Love</div>
             <p>
                 Kakak adalah salah satu hadiah pertama yang Allah
                 titipkan dalam keluarga ini. Semoga selalu menjadi
                 pribadi yang kuat, penyayang, dan penuh kebaikan.
-                Terima kasih telah menjadi bagian penting dari cerita
-                keluarga serta menjadi sosok yang selalu kami banggakan
-                dan sayangi. 🤍
             </p>
-
         </div>
 
-        <!-- ANAK KEDUA -->
         <div class="person-card">
-
             <div class="photo">
                 <img src="saya.jpeg" alt="Foto Anak Kedua">
             </div>
-
             <h3>Anak Kedua</h3>
-            <h4>Thufail lathuf</h4>
-
-            <div class="role">
-                The Sweet Middle
-            </div>
-
+            <h4>Thufail Lathuf</h4>
+            <div class="role">The Sweet Middle</div>
             <p>
                 Sebagai anak kedua, semoga selalu menjadi penyejuk
                 suasana, pembawa tawa, dan pribadi yang tumbuh dengan
-                iman serta akhlak yang baik. Semoga setiap langkah
-                dipenuhi keberkahan, setiap impian dimudahkan Allah,
-                dan kasih sayang untuk keluarga selalu tumbuh
-                sepanjang kehidupan. 🤍
+                iman serta akhlak yang baik.
             </p>
-
         </div>
 
-        <!-- ANAK KETIGA -->
         <div class="person-card">
-
             <div class="photo">
                 <img src="hudza.jpeg" alt="Foto Hudza">
             </div>
-
             <h3>Anak Ketiga</h3>
-            <h4>Hudzaifah lathuf</h4>
-
-            <div class="role">
-                The Little Sunshine
-            </div>
-
+            <h4>Hudzaifah Lathuf</h4>
+            <div class="role">The Little Sunshine</div>
             <p>
                 Adik kecil yang melengkapi warna dalam keluarga ini.
                 Semoga tumbuh menjadi anak yang saleh, lembut hatinya,
-                luas ilmunya, dan selalu berada dalam lindungan Allah.
-                Kehadiranmu adalah kebahagiaan kecil yang membuat rumah
-                ini terasa semakin lengkap dan penuh cinta. 🤍
+                dan selalu berada dalam lindungan Allah.
             </p>
-
         </div>
-
     </div>
-
 </section>
 
-<!-- GALERI KELUARGA -->
+<!-- GALERI KELUARGA (8 FOTO BERSAMA) -->
 <section class="reveal">
-
     <div class="section-title">
         <div class="label">Our Precious Memories</div>
-
-        <h2>Galeri Keluarga 🤍</h2>
-
+        <h2>Galeri Keluarga 🩵</h2>
         <p>
             Setiap foto menyimpan cerita dan kenangan
             yang akan selalu berharga.
@@ -1010,107 +890,46 @@ footer strong {
     </div>
 
     <div class="gallery">
-
         <div class="gallery-card">
-            <div class="gallery-item">
-                <img src="fotokeluarga1.jpeg" alt="Foto Keluarga Pertama">
-            </div>
-
-            <div class="gallery-caption">
-                <h3>Waktu Bersama</h3>
-                <p>Kebersamaan yang hangat</p>
-            </div>
+            <div class="gallery-item"><img src="fotokeluarga1.jpeg" alt="Foto Keluarga 1"></div>
+            <div class="gallery-caption"><h3>Waktu Bersama</h3><p>Kebersamaan yang hangat</p></div>
         </div>
-
         <div class="gallery-card">
-            <div class="gallery-item">
-                <img src="fotokeluarga2.jpeg" alt="Foto Keluarga Kedua">
-            </div>
-
-            <div class="gallery-caption">
-                <h3>Senyuman Kita</h3>
-                <p>Bahagia dalam kesederhanaan</p>
-            </div>
+            <div class="gallery-item"><img src="fotokeluarga2.jpeg" alt="Foto Keluarga 2"></div>
+            <div class="gallery-caption"><h3>Senyuman Kita</h3><p>Bahagia dalam kesederhanaan</p></div>
         </div>
-
         <div class="gallery-card">
-            <div class="gallery-item">
-                <img src="fotokeluarga3.jpeg" alt="Foto Keluarga Ketiga">
-            </div>
-
-            <div class="gallery-caption">
-                <h3>Kenangan Manis</h3>
-                <p>Disimpan di dalam hati</p>
-            </div>
+            <div class="gallery-item"><img src="fotokeluarga3.jpeg" alt="Foto Keluarga 3"></div>
+            <div class="gallery-caption"><h3>Kenangan Manis</h3><p>Disimpan di dalam hati</p></div>
         </div>
-
         <div class="gallery-card">
-            <div class="gallery-item">
-                <img src="fotokeluarga4.jpeg" alt="Foto Keluarga Keempat">
-            </div>
-
-            <div class="gallery-caption">
-                <h3>Waktu Bersama</h3>
-                <p>Selalu menjadi kenangan</p>
-            </div>
+            <div class="gallery-item"><img src="fotokeluarga4.jpeg" alt="Foto Keluarga 4"></div>
+            <div class="gallery-caption"><h3>Momen Ceria</h3><p>Tawa penuh kehangatan</p></div>
         </div>
-
         <div class="gallery-card">
-            <div class="gallery-item">
-                <img src="fotokeluarga5.jpeg" alt="Foto Keluarga Kelima">
-            </div>
-
-            <div class="gallery-caption">
-                <h3>Tawa yang Indah</h3>
-                <p>Kenangan yang tak terlupakan</p>
-            </div>
+            <div class="gallery-item"><img src="fotokeluarga5.jpeg" alt="Foto Keluarga 5"></div>
+            <div class="gallery-caption"><h3>Petualangan Bersama</h3><p>Jalan-jalan keluarga</p></div>
         </div>
-
         <div class="gallery-card">
-            <div class="gallery-item">
-                <img src="fotokeluarga6.jpeg" alt="Foto Keluarga Keenam">
-            </div>
-
-            <div class="gallery-caption">
-                <h3>Hangatnya Rumah</h3>
-                <p>Cinta di setiap kebersamaan</p>
-            </div>
+            <div class="gallery-item"><img src="fotokeluarga6.jpeg" alt="Foto Keluarga 6"></div>
+            <div class="gallery-caption"><h3>Keluarga Tercinta</h3><p>Selalu saling menyayangi</p></div>
         </div>
-
         <div class="gallery-card">
-            <div class="gallery-item">
-                <img src="fotokeluarga7.jpeg" alt="Foto Keluarga Ketujuh">
-            </div>
-
-            <div class="gallery-caption">
-                <h3>Memori Indah</h3>
-                <p>Disimpan selamanya</p>
-            </div>
+            <div class="gallery-item"><img src="fotokeluarga7.jpeg" alt="Foto Keluarga 7"></div>
+            <div class="gallery-caption"><h3>Hari Spesial</h3><p>Momen tak terlupakan</p></div>
         </div>
-
         <div class="gallery-card">
-            <div class="gallery-item">
-                <img src="fotokeluarga8.jpeg" alt="Foto Keluarga Kedelapan">
-            </div>
-
-            <div class="gallery-caption">
-                <h3>Keluarga Selamanya</h3>
-                <p>Cinta yang tidak berakhir</p>
-            </div>
+            <div class="gallery-item"><img src="fotokeluarga8.jpeg" alt="Foto Keluarga 8"></div>
+            <div class="gallery-caption"><h3>Rumah Kita</h3><p>Tempat kita selalu pulang</p></div>
         </div>
-
     </div>
-
 </section>
 
 <!-- PESAN UNTUK KELUARGA -->
 <section class="message-section reveal">
-
     <div class="section-title">
         <div class="label">From Our Hearts</div>
-
         <h2>Pesan Untuk Keluarga 💌</h2>
-
         <p>
             Sebuah pesan sederhana dari hati
             untuk orang-orang yang paling berarti.
@@ -1118,12 +937,9 @@ footer strong {
     </div>
 
     <div class="message-card">
-
         <div class="envelope">💌</div>
 
-        <h3>
-            Untuk Abi, Ummi, dan Keluarga Tercinta
-        </h3>
+        <h3>Untuk Abi, Ummi, dan Keluarga Tercinta</h3>
 
         <p>
             Bismillahirrahmanirrahim. Segala puji bagi Allah
@@ -1188,19 +1004,14 @@ footer strong {
             Dengan penuh cinta,<br>
             Keluarga Tercinta 🌸
         </div>
-
     </div>
-
 </section>
 
 <!-- KEGIATAN KELUARGA -->
 <section class="reveal">
-
     <div class="section-title">
         <div class="label">Little Things, Big Happiness</div>
-
         <h2>Suasana yang Kita Cintai</h2>
-
         <p>
             Momen-momen sederhana yang membuat keluarga
             menjadi tempat paling istimewa.
@@ -1208,12 +1019,9 @@ footer strong {
     </div>
 
     <div class="memory-grid">
-
         <div class="memory-card">
             <div class="icon">🍽️</div>
-
             <h3>Makan Bersama</h3>
-
             <p>
                 Menikmati makanan sederhana sambil berbagi
                 cerita, tawa, dan rasa syukur bersama keluarga.
@@ -1222,9 +1030,7 @@ footer strong {
 
         <div class="memory-card">
             <div class="icon">🛋️</div>
-
             <h3>Berkumpul di Rumah</h3>
-
             <p>
                 Duduk bersama, berbincang, dan menikmati
                 suasana hangat di ruang keluarga tercinta.
@@ -1233,158 +1039,210 @@ footer strong {
 
         <div class="memory-card">
             <div class="icon">🌿</div>
-
             <h3>Jalan-Jalan Bersama</h3>
-
             <p>
                 Menciptakan kenangan baru melalui perjalanan
                 kecil yang penuh kebahagiaan dan kebersamaan.
             </p>
         </div>
-
     </div>
-
 </section>
 
-<!-- PESAN PENUTUP -->
+<!-- PESAN PENUTUP & TOMBOL KEJUTAN -->
 <section class="reveal">
-
     <div class="quote-box">
-
         <p>
             “Semoga rumah ini selalu menjadi tempat
             yang dipenuhi doa, tawa, kesabaran,
             dan cinta yang tidak pernah habis.”
         </p>
-
         <span>
-            Allahumma baarik fii usratinaa 🤍
+            Allahumma baarik 🤍
         </span>
 
-    </div>
-
-</section>
-
-<!-- QR CODE -->
-<section class="qr-section reveal">
-
-    <div class="section-title">
-        <div class="label">Share Our Story</div>
-
-        <h2>QR Code Keluarga ✨</h2>
-
-        <p>
-            Masukkan alamat website keluarga untuk membuat
-            QR Code yang dapat dipindai.
-        </p>
-    </div>
-
-    <div class="qr-card">
-
-        <h3>Our Family QR 🤍</h3>
-
-        <p>
-            Pindai QR Code di bawah untuk membuka
-            website keluarga kita.
-        </p>
-
-        <input
-            class="qr-input"
-            id="qrText"
-            type="url"
-            placeholder="https://alamat-website-kalian.com"
-            value="https://kelurgatercinta.vercel.app"
-        >
-
-        <div id="qrcode"></div>
-
-        <button class="btn" onclick="buatQR()">
-            Buat QR Code ✨
+        <!-- TOMBOL KEJUTAN -->
+        <br>
+        <button id="surpriseBtn" class="btn btn-surprise" onclick="triggerSurprise()">
+            Lihat Kejutan ✨
         </button>
-
     </div>
 
+    <!-- AREA UCAPAN TERIMA KASIH LEBIH BESAR & MERIAH -->
+    <div id="surpriseArea">
+        <div class="thank-you-card">
+            <h2>✨ TERIMA KASIH BANYAK ✨</h2>
+            <p>
+                Terima kasih telah melihat kenangan indah keluarga ini sampai selesai! ❤️<br>
+                Semoga Allah senantiasa menjaga kehangatan, cinta, kebahagiaan, dan keberkahan dalam keluarga kita selamanya. Amin ✨
+            </p>
+            <div class="icons-festive">💐🏡🎉✨🩵</div>
+        </div>
+
+        <!-- SECTION BARCODE / QR CODE -->
+        <div class="qr-card">
+            <h3>Our Family QR 🩵</h3>
+            <p>Pindai QR Code di bawah untuk membuka website keluarga kita.</p>
+            <input class="qr-input" id="qrText" type="url" value="https://kelurgatercinta.vercel.app">
+            <div id="qrcode"></div>
+            <button class="btn" onclick="buatQR()">Buat QR Code ✨</button>
+        </div>
+    </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-
-    <p>
-        Made with love for Abi, Ummi, and our family 🤍
-    </p>
-
-    <p>
-        © <span id="year"></span>
-        <strong>Keluarga Tercinta</strong>
-    </p>
-
-    <p>
-        “Rumah terbaik adalah tempat hati merasa diterima.”
-    </p>
-
+    <p>Made with love for Abi, Ummi, and our family 🩵</p>
+    <p>© <span id="year"></span> <strong>Keluarga Lathuf</strong></p>
 </footer>
 
-<!-- LIBRARY QR CODE -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
-// TAHUN OTOMATIS
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+const validPasswords = [
+    "agus umbarno",
+    "sulami",
+    "tsabita munira laththuf",
+    "thufail lathuf",
+    "hudzaifah lathuf",
+    "welcome family lathuf",
+    "welcome keluarga lathuf"
+];
 
-// ANIMASI SAAT SCROLL
+function checkAccess() {
+    const inputVal = document.getElementById("passwordInput").value.trim().toLowerCase();
+    const errorMsg = document.getElementById("errorMsg");
+    const overlay = document.getElementById("loginOverlay");
+
+    if (validPasswords.includes(inputVal)) {
+        errorMsg.style.display = "none";
+        overlay.classList.add("hidden");
+        document.body.classList.remove("locked");
+        
+        // AUTO SCROLL KEMBALI KE PALING ATAS SETELAH LOGIN
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    } else {
+        errorMsg.style.display = "block";
+    }
+}
+
+function handleEnter(e) {
+    if (e.key === "Enter") {
+        checkAccess();
+    }
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
 const reveals = document.querySelectorAll(".reveal");
-
 const observer = new IntersectionObserver((entries) => {
-
     entries.forEach(entry => {
-
         if (entry.isIntersecting) {
             entry.target.classList.add("show");
         }
-
     });
-
-}, {
-    threshold: 0.12
-});
+}, { threshold: 0.12 });
 
 reveals.forEach(element => observer.observe(element));
 
-// QR CODE
-function buatQR() {
+/* EFEK KEJUTAN: KEMBANG API & ASAP */
+function triggerSurprise() {
+    const btn = document.getElementById("surpriseBtn");
+    const surpriseArea = document.getElementById("surpriseArea");
+    
+    // Sembunyikan tombol setelah diklik
+    btn.style.display = "none";
 
+    // Launch Efek Kembang Api
+    launchFireworks();
+
+    // Launch Efek Asap
+    createSmokeEffect();
+
+    // Tampilkan Area Ucapan & Barcode dengan animasi smooth
+    setTimeout(() => {
+        surpriseArea.classList.add("show-surprise");
+        surpriseArea.scrollIntoView({ behavior: 'smooth' });
+        buatQR();
+    }, 400);
+}
+
+function launchFireworks() {
+    var count = 250;
+    var defaults = {
+        origin: { y: 0.7 }
+    };
+
+    function fire(particleRatio, opts) {
+        confetti(Object.assign({}, defaults, opts, {
+            particleCount: Math.floor(count * particleRatio)
+        }));
+    }
+
+    fire(0.25, {
+        spread: 30,
+        startVelocity: 60,
+    });
+    fire(0.2, {
+        spread: 70,
+    });
+    fire(0.35, {
+        spread: 120,
+        decay: 0.91,
+        scalar: 0.9
+    });
+    fire(0.1, {
+        spread: 140,
+        startVelocity: 30,
+        decay: 0.92,
+        scalar: 1.3
+    });
+    fire(0.1, {
+        spread: 140,
+        startVelocity: 50,
+    });
+}
+
+function createSmokeEffect() {
+    const smokeContainer = document.getElementById("smokeContainer");
+    smokeContainer.style.display = "block";
+    smokeContainer.innerHTML = "";
+
+    for (let i = 0; i < 18; i++) {
+        setTimeout(() => {
+            const smoke = document.createElement("div");
+            smoke.className = "smoke-cloud";
+            smoke.style.left = (Math.random() * 80 + 10) + "%";
+            smoke.style.animationDuration = (Math.random() * 2 + 4) + "s";
+            smokeContainer.appendChild(smoke);
+
+            setTimeout(() => {
+                smoke.remove();
+            }, 5000);
+        }, i * 180);
+    }
+}
+
+function buatQR() {
     const text = document.getElementById("qrText").value.trim();
     const container = document.getElementById("qrcode");
-
-    if (!text) {
-        alert("Masukkan alamat website terlebih dahulu!");
-        return;
-    }
-
+    if (!text) return;
     if (typeof QRCode === "undefined") {
-
-        container.innerHTML =
-            "<p>QR Code membutuhkan koneksi internet untuk memuat library.</p>";
-
+        container.innerHTML = "<p>Koneksi internet diperlukan untuk membuat QR Code.</p>";
         return;
     }
-
     container.innerHTML = "";
-
     new QRCode(container, {
         text: text,
         width: 190,
         height: 190,
-        colorDark: "#8c4567",
+        colorDark: "#0f4c81",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
     });
-
 }
-
-// Jalankan otomatis saat halaman dimuat
-buatQR();
 </script>
 
 </body>
