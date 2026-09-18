@@ -416,7 +416,7 @@ header {
     font-weight: 600;
 }
 
-/* GALERI DENGAN GRID 4 KOLOM */
+/* GALERI DENGAN GRID 4 KOLOM DESKTOP */
 .gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -521,7 +521,7 @@ header {
     line-height: 1.9;
 }
 
-/* AREA KEJUTAN (ASAP, UCAPAN MERIAH & QR CODE) */
+/* AREA KEJUTAN */
 #surpriseArea {
     display: none;
     opacity: 0;
@@ -536,7 +536,7 @@ header {
     transform: scale(1);
 }
 
-/* DESAIN KARTU UCAPAN TERIMA KASIH MERIAH & BESAR */
+/* DESAIN KARTU UCAPAN TERIMA KASIH */
 .thank-you-card {
     padding: clamp(45px, 6vw, 85px) clamp(25px, 4vw, 50px);
     background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #bae6fd 100%);
@@ -682,10 +682,19 @@ footer {
     .children-grid, .memory-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* MEDIA QUERY UNTUK HP */
 @media (max-width: 650px) {
     section { padding: 60px 0; }
     .family-grid, .children-grid, .memory-grid { grid-template-columns: 1fr; max-width: 390px; margin: auto; }
-    .gallery { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    
+    /* MODIFIKASI: Tampilan galeri dibuat 1 kolom saja di HP */
+    .gallery { 
+        grid-template-columns: 1fr; 
+        gap: 20px; 
+        max-width: 390px;
+        margin: auto;
+    }
+    
     .atmosphere-box { min-height: 420px; }
     .atmosphere-content { padding: 28px; }
 }
@@ -878,7 +887,7 @@ footer {
     </div>
 </section>
 
-<!-- GALERI KELUARGA (8 FOTO BERSAMA) -->
+<!-- GALERI KELUARGA (URUTAN CAPTION DISESUAIKAN DENGAN FOTO) -->
 <section class="reveal">
     <div class="section-title">
         <div class="label">Our Precious Memories</div>
@@ -890,37 +899,52 @@ footer {
     </div>
 
     <div class="gallery">
+        <!-- Foto 1: Kebersamaan Santai di Ruang Tamu -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga1.jpeg" alt="Foto Keluarga 1"></div>
+            <div class="gallery-item"><img src="fotokeluarga1.jpeg" alt="Waktu Bersama"></div>
             <div class="gallery-caption"><h3>Waktu Bersama</h3><p>Kebersamaan yang hangat</p></div>
         </div>
+
+        <!-- Foto 2: Kacamata Unik Berdua -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga2.jpeg" alt="Foto Keluarga 2"></div>
+            <div class="gallery-item"><img src="fotokeluarga2.jpeg" alt="Senyuman Kita"></div>
             <div class="gallery-caption"><h3>Senyuman Kita</h3><p>Bahagia dalam kesederhanaan</p></div>
         </div>
+
+        <!-- Foto 3: Foto Bersama di Latar Pegunungan -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga3.jpeg" alt="Foto Keluarga 3"></div>
+            <div class="gallery-item"><img src="fotokeluarga3.jpeg" alt="Kenangan Manis"></div>
             <div class="gallery-caption"><h3>Kenangan Manis</h3><p>Disimpan di dalam hati</p></div>
         </div>
+
+        <!-- Foto 4: Berfoto Bersama Menyambut Hari Spesial -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga4.jpeg" alt="Foto Keluarga 4"></div>
+            <div class="gallery-item"><img src="fotokeluarga4.jpeg" alt="Momen Ceria"></div>
             <div class="gallery-caption"><h3>Momen Ceria</h3><p>Tawa penuh kehangatan</p></div>
         </div>
+
+        <!-- Foto 5: Duduk Santai di Luar Ruangan/Taman -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga5.jpeg" alt="Foto Keluarga 5"></div>
-            <div class="gallery-caption"><h3>Petualangan Bersama</h3><p>Jalan-jalan keluarga</p></div>
-        </div>
-        <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga6.jpeg" alt="Foto Keluarga 6"></div>
-            <div class="gallery-caption"><h3>Keluarga Tercinta</h3><p>Selalu saling menyayangi</p></div>
-        </div>
-        <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga7.jpeg" alt="Foto Keluarga 7"></div>
+            <div class="gallery-item"><img src="fotokeluarga5.jpeg" alt="Hari Spesial"></div>
             <div class="gallery-caption"><h3>Hari Spesial</h3><p>Momen tak terlupakan</p></div>
         </div>
+
+        <!-- Foto 6: Foto Hangat di Dalam Rumah -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga8.jpeg" alt="Foto Keluarga 8"></div>
+            <div class="gallery-item"><img src="fotokeluarga6.jpeg" alt="Rumah Kita"></div>
             <div class="gallery-caption"><h3>Rumah Kita</h3><p>Tempat kita selalu pulang</p></div>
+        </div>
+
+        <!-- Foto 7: Foto Mirror/Spot Foto Kekinian -->
+        <div class="gallery-card">
+            <div class="gallery-item"><img src="fotokeluarga7.jpeg" alt="Keluarga Tercinta"></div>
+            <div class="gallery-caption"><h3>Keluarga Tercinta</h3><p>Selalu saling menyayangi</p></div>
+        </div>
+
+        <!-- Foto 8: Wisata Candi/Luar Ruangan -->
+        <div class="gallery-card">
+            <div class="gallery-item"><img src="fotokeluarga8.jpeg" alt="Petualangan Bersama"></div>
+            <div class="gallery-caption"><h3>Petualangan Bersama</h3><p>Jalan-jalan keluarga</p></div>
         </div>
     </div>
 </section>
@@ -1118,7 +1142,6 @@ function checkAccess() {
         overlay.classList.add("hidden");
         document.body.classList.remove("locked");
         
-        // AUTO SCROLL KEMBALI KE PALING ATAS SETELAH LOGIN
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -1134,116 +1157,63 @@ function handleEnter(e) {
     }
 }
 
-document.getElementById("year").textContent = new Date().getFullYear();
-
-const reveals = document.querySelectorAll(".reveal");
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
+// Scroll Reveal Effect
+function reveal() {
+    const reveals = document.querySelectorAll(".reveal");
+    for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("show");
         }
-    });
-}, { threshold: 0.12 });
+    }
+}
 
-reveals.forEach(element => observer.observe(element));
+window.addEventListener("scroll", reveal);
+reveal();
 
-/* EFEK KEJUTAN: KEMBANG API & ASAP */
+// Set Year in Footer
+document.getElementById("year").innerText = new Date().getFullYear();
+
+// Surprise Function
 function triggerSurprise() {
-    const btn = document.getElementById("surpriseBtn");
     const surpriseArea = document.getElementById("surpriseArea");
-    
-    // Sembunyikan tombol setelah diklik
-    btn.style.display = "none";
+    surpriseArea.classList.add("show-surprise");
 
-    // Launch Efek Kembang Api
-    launchFireworks();
-
-    // Launch Efek Asap
-    createSmokeEffect();
-
-    // Tampilkan Area Ucapan & Barcode dengan animasi smooth
-    setTimeout(() => {
-        surpriseArea.classList.add("show-surprise");
-        surpriseArea.scrollIntoView({ behavior: 'smooth' });
-        buatQR();
-    }, 400);
-}
-
-function launchFireworks() {
-    var count = 250;
-    var defaults = {
-        origin: { y: 0.7 }
-    };
-
-    function fire(particleRatio, opts) {
-        confetti(Object.assign({}, defaults, opts, {
-            particleCount: Math.floor(count * particleRatio)
-        }));
+    // Launch Confetti Effect
+    if (typeof confetti === 'function') {
+        confetti({
+            particleCount: 120,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
     }
 
-    fire(0.25, {
-        spread: 30,
-        startVelocity: 60,
-    });
-    fire(0.2, {
-        spread: 70,
-    });
-    fire(0.35, {
-        spread: 120,
-        decay: 0.91,
-        scalar: 0.9
-    });
-    fire(0.1, {
-        spread: 140,
-        startVelocity: 30,
-        decay: 0.92,
-        scalar: 1.3
-    });
-    fire(0.1, {
-        spread: 140,
-        startVelocity: 50,
-    });
+    surpriseArea.scrollIntoView({ behavior: 'smooth' });
 }
 
-function createSmokeEffect() {
-    const smokeContainer = document.getElementById("smokeContainer");
-    smokeContainer.style.display = "block";
-    smokeContainer.innerHTML = "";
-
-    for (let i = 0; i < 18; i++) {
-        setTimeout(() => {
-            const smoke = document.createElement("div");
-            smoke.className = "smoke-cloud";
-            smoke.style.left = (Math.random() * 80 + 10) + "%";
-            smoke.style.animationDuration = (Math.random() * 2 + 4) + "s";
-            smokeContainer.appendChild(smoke);
-
-            setTimeout(() => {
-                smoke.remove();
-            }, 5000);
-        }, i * 180);
-    }
-}
-
+// QR Code Generator
+let qr;
 function buatQR() {
-    const text = document.getElementById("qrText").value.trim();
-    const container = document.getElementById("qrcode");
-    if (!text) return;
-    if (typeof QRCode === "undefined") {
-        container.innerHTML = "<p>Koneksi internet diperlukan untuk membuat QR Code.</p>";
-        return;
+    const text = document.getElementById("qrText").value;
+    const qrcodeDiv = document.getElementById("qrcode");
+    qrcodeDiv.innerHTML = "";
+    
+    if (text) {
+        qr = new QRCode(qrcodeDiv, {
+            text: text,
+            width: 180,
+            height: 180,
+            colorDark : "#0f4c81",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
     }
-    container.innerHTML = "";
-    new QRCode(container, {
-        text: text,
-        width: 190,
-        height: 190,
-        colorDark: "#0f4c81",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-    });
 }
-</script>
 
+// Generate QR Code di awal
+buatQR();
+</script>
 </body>
 </html>
