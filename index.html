@@ -6,7 +6,7 @@
 <title>Rumah Penuh Cinta | Keluarga dalam Doa 🩵</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- Library Canvas Confetti untuk Efek Kembang Api -->
+<!-- Library Canvas Confetti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
@@ -31,7 +31,7 @@ body.locked {
     overflow: hidden;
 }
 
-/* OVERLAY MODAL PASSWORD */
+/* OVERLAY MODAL PASSWORD UTAMA */
 #loginOverlay {
     position: fixed;
     inset: 0;
@@ -50,6 +50,27 @@ body.locked {
     visibility: hidden;
 }
 
+/* OVERLAY MODAL PASSWORD KHUSUS BARCODE */
+#qrOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(15, 76, 129, 0.85);
+    backdrop-filter: blur(25px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#qrOverlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
 .login-card {
     background: rgba(255, 255, 255, 0.95);
     border: 2px solid #bbe3fe;
@@ -59,6 +80,18 @@ body.locked {
     text-align: center;
     max-width: 460px;
     width: 100%;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #0f4c81;
 }
 
 .login-card .icon {
@@ -125,7 +158,7 @@ body.locked {
     margin-bottom: 10px;
 }
 
-/* BACKGROUND GRADIENT BIRU LANGIT & BIRU MUDA */
+/* BACKGROUND */
 body::before {
     content: "";
     position: fixed;
@@ -188,10 +221,6 @@ section {
     padding: 18px 42px;
     background: linear-gradient(135deg, #0284c7, #0369a1);
     animation: pulse 2s infinite;
-}
-
-.btn-surprise:hover {
-    transform: translateY(-5px) scale(1.03);
 }
 
 .floating {
@@ -269,8 +298,6 @@ header {
     line-height: 2;
 }
 
-.hero .btn { margin-top: 35px; }
-
 .scroll {
     display: block;
     margin-top: 40px;
@@ -331,22 +358,6 @@ header {
     background: rgba(255, 255, 255, 0.95);
 }
 
-.person-card::before {
-    content: "🩵";
-    position: absolute;
-    top: 15px;
-    right: 18px;
-    z-index: 3;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: #ffffff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-}
-
 .photo {
     position: relative;
     width: 100%;
@@ -356,16 +367,6 @@ header {
     overflow: hidden;
     background: linear-gradient(135deg, #bae6fd, #e0f2fe, #7dd3fc);
     box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-}
-
-.photo::before {
-    content: "";
-    position: absolute;
-    inset: 8px;
-    z-index: 2;
-    border: 2px solid rgba(255, 255, 255, 0.85);
-    border-radius: 22px;
-    pointer-events: none;
 }
 
 .photo img {
@@ -416,7 +417,6 @@ header {
     font-weight: 600;
 }
 
-/* GALERI DENGAN GRID 4 KOLOM DESKTOP */
 .gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -460,7 +460,6 @@ header {
 .gallery-caption h3 { color: #0f4c81; font-size: 19px; }
 .gallery-caption p { color: #5582b0; font-size: 12px; margin-top: 4px; }
 
-/* PESAN KELUARGA & KEGIATAN */
 .message-card {
     padding: clamp(30px, 5vw, 65px);
     background: rgba(255, 255, 255, 0.9);
@@ -504,22 +503,9 @@ header {
     background: rgba(255, 255, 255, 0.95);
 }
 
-.memory-card .icon {
-    font-size: 45px;
-    margin-bottom: 15px;
-}
-
-.memory-card h3 {
-    color: #0f4c81;
-    font-size: 22px;
-    margin-bottom: 10px;
-}
-
-.memory-card p {
-    color: #47709b;
-    font-size: 13.5px;
-    line-height: 1.9;
-}
+.memory-card .icon { font-size: 45px; margin-bottom: 15px; }
+.memory-card h3 { color: #0f4c81; font-size: 22px; margin-bottom: 10px; }
+.memory-card p { color: #47709b; font-size: 13.5px; line-height: 1.9; }
 
 /* AREA KEJUTAN */
 #surpriseArea {
@@ -536,7 +522,6 @@ header {
     transform: scale(1);
 }
 
-/* DESAIN KARTU UCAPAN TERIMA KASIH */
 .thank-you-card {
     padding: clamp(45px, 6vw, 85px) clamp(25px, 4vw, 50px);
     background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #bae6fd 100%);
@@ -544,7 +529,6 @@ header {
     border-radius: 50px;
     box-shadow: 0 30px 80px rgba(2, 132, 199, 0.35), inset 0 0 30px rgba(255, 255, 255, 0.8);
     text-align: center;
-    margin-bottom: 50px;
     position: relative;
     overflow: hidden;
 }
@@ -558,8 +542,6 @@ header {
     background: linear-gradient(135deg, #0f4c81, #0284c7, #38bdf8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
-    animation: festivePulse 2s ease-in-out infinite;
 }
 
 .thank-you-card p {
@@ -576,43 +558,11 @@ header {
     animation: bounce 2s infinite;
 }
 
-@keyframes festivePulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-}
-
-/* EFEK ASAP */
-.smoke-container {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 999;
-    overflow: hidden;
-    display: none;
-}
-
-.smoke-cloud {
-    position: absolute;
-    bottom: -100px;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(224, 242, 254, 0.85) 0%, rgba(186, 230, 253, 0.45) 50%, transparent 80%);
-    border-radius: 50%;
-    filter: blur(40px);
-    animation: riseUp 5s ease-out forwards;
-}
-
-@keyframes riseUp {
-    0% { transform: translateY(0) scale(0.8); opacity: 0; }
-    30% { opacity: 0.85; }
-    100% { transform: translateY(-110vh) scale(3.5); opacity: 0; }
-}
-
 .qr-card {
     max-width: 550px;
     margin: auto;
     padding: 40px 30px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     border: 2px solid #ffffff;
     border-radius: 35px;
     box-shadow: 0 20px 50px rgba(56, 189, 248, 0.15);
@@ -682,19 +632,15 @@ footer {
     .children-grid, .memory-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* MEDIA QUERY UNTUK HP */
 @media (max-width: 650px) {
     section { padding: 60px 0; }
     .family-grid, .children-grid, .memory-grid { grid-template-columns: 1fr; max-width: 390px; margin: auto; }
-    
-    /* MODIFIKASI: Tampilan galeri dibuat 1 kolom saja di HP */
     .gallery { 
         grid-template-columns: 1fr; 
         gap: 20px; 
         max-width: 390px;
         margin: auto;
     }
-    
     .atmosphere-box { min-height: 420px; }
     .atmosphere-content { padding: 28px; }
 }
@@ -703,7 +649,7 @@ footer {
 
 <body class="locked">
 
-<!-- OVERLAY LOGIN PASSWORD -->
+<!-- OVERLAY LOGIN PASSWORD UTAMA -->
 <div id="loginOverlay">
     <div class="login-card">
         <div class="welcome-msg">WELCOME FAMILY LATHUF</div>
@@ -726,8 +672,38 @@ footer {
     </div>
 </div>
 
-<!-- CONTAINER EFEK ASAP -->
-<div id="smokeContainer" class="smoke-container"></div>
+<!-- OVERLAY KHUSUS HALAMAN BARCODE (TERKUNCI PASSWORD) -->
+<div id="qrOverlay">
+    <div class="login-card" id="qrPassBox">
+        <button class="close-btn" onclick="closeQROverlay()">✕</button>
+        <div class="icon">🔒</div>
+        <h2>Akses Barcode Keluarga</h2>
+        <p class="instruction">
+            Silakan masukkan kata sandi khusus untuk membuka Barcode/QR Code ✨
+        </p>
+        <input 
+            type="password" 
+            id="qrPasswordInput" 
+            class="login-input" 
+            placeholder="Ketik kata sandi..." 
+            onkeypress="handleQREnter(event)"
+        >
+        <div id="qrErrorMsg" class="error-msg">
+            Kata sandi salah! Silakan coba lagi. 🙏
+        </div>
+        <button class="btn" onclick="checkQRAccess()">Buka Barcode ✨</button>
+    </div>
+
+    <!-- HALAMAN BARCODE (TAMPIL SETELAH PASSWORD BENAR) -->
+    <div class="qr-card" id="qrContentBox" style="display: none;">
+        <button class="close-btn" onclick="closeQROverlay()">✕</button>
+        <h3>Our Family QR 🩵</h3>
+        <p>Pindai QR Code di bawah untuk membuka website keluarga kita.</p>
+        <input class="qr-input" id="qrText" type="url" value="https://kelurgatercinta.vercel.app">
+        <div id="qrcode"></div>
+        <button class="btn" onclick="buatQR()">Buat QR Code ✨</button>
+    </div>
+</div>
 
 <!-- ORNAMEN TERBANG -->
 <div class="floating f1">☁️</div>
@@ -887,7 +863,7 @@ footer {
     </div>
 </section>
 
-<!-- GALERI KELUARGA (URUTAN CAPTION DISESUAIKAN DENGAN FOTO) -->
+<!-- GALERI KELUARGA -->
 <section class="reveal">
     <div class="section-title">
         <div class="label">Our Precious Memories</div>
@@ -899,52 +875,68 @@ footer {
     </div>
 
     <div class="gallery">
-        <!-- Foto 1: Kebersamaan Santai di Ruang Tamu -->
         <div class="gallery-card">
             <div class="gallery-item"><img src="fotokeluarga1.jpeg" alt="Waktu Bersama"></div>
-            <div class="gallery-caption"><h3>Waktu Bersama</h3><p>Kebersamaan yang hangat</p></div>
+            <div class="gallery-caption">
+                <h3>Waktu Bersama</h3>
+                <p>Kebersamaan yang penuh kehangatan di rumah</p>
+            </div>
         </div>
 
-        <!-- Foto 2: Kacamata Unik Berdua -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga2.jpeg" alt="Senyuman Kita"></div>
-            <div class="gallery-caption"><h3>Senyuman Kita</h3><p>Bahagia dalam kesederhanaan</p></div>
+            <div class="gallery-item"><img src="fotokeluarga2.jpeg" alt="Momen Ceria"></div>
+            <div class="gallery-caption">
+                <h3>Momen Ceria</h3>
+                <p>Keceriaan dan keakraban adik-beradik</p>
+            </div>
         </div>
 
-        <!-- Foto 3: Foto Bersama di Latar Pegunungan -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga3.jpeg" alt="Kenangan Manis"></div>
-            <div class="gallery-caption"><h3>Kenangan Manis</h3><p>Disimpan di dalam hati</p></div>
+            <div class="gallery-item"><img src="fotokeluarga3.jpeg" alt="Petualangan Bersama"></div>
+            <div class="gallery-caption">
+                <h3>Petualangan Bersama</h3>
+                <p>Menikmati indahnya alam bersama keluarga</p>
+            </div>
         </div>
 
-        <!-- Foto 4: Berfoto Bersama Menyambut Hari Spesial -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga4.jpeg" alt="Momen Ceria"></div>
-            <div class="gallery-caption"><h3>Momen Ceria</h3><p>Tawa penuh kehangatan</p></div>
+            <div class="gallery-item"><img src="fotokeluarga4.jpeg" alt="Momen Kebahagiaan"></div>
+            <div class="gallery-caption">
+                <h3>Momen Kebahagiaan</h3>
+                <p>Senyuman dan kehangatan dalam setiap detik</p>
+            </div>
         </div>
 
-        <!-- Foto 5: Duduk Santai di Luar Ruangan/Taman -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga5.jpeg" alt="Hari Spesial"></div>
-            <div class="gallery-caption"><h3>Hari Spesial</h3><p>Momen tak terlupakan</p></div>
+            <div class="gallery-item"><img src="fotokeluarga5.jpeg" alt="Aksi Lucu Kita"></div>
+            <div class="gallery-caption">
+                <h3>Aksi Lucu Kita</h3>
+                <p>Tawa dan gelak tawa bersama</p>
+            </div>
         </div>
 
-        <!-- Foto 6: Foto Hangat di Dalam Rumah -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga6.jpeg" alt="Rumah Kita"></div>
-            <div class="gallery-caption"><h3>Rumah Kita</h3><p>Tempat kita selalu pulang</p></div>
+            <div class="gallery-item"><img src="fotokeluarga6.jpeg" alt="Jejak Kenangan"></div>
+            <div class="gallery-caption">
+                <h3>Jejak Kenangan</h3>
+                <p>Mencipta kenangan di tempat yang bersejarah</p>
+            </div>
         </div>
 
-        <!-- Foto 7: Foto Mirror/Spot Foto Kekinian -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga7.jpeg" alt="Keluarga Tercinta"></div>
-            <div class="gallery-caption"><h3>Keluarga Tercinta</h3><p>Selalu saling menyayangi</p></div>
+            <div class="gallery-item"><img src="fotokeluarga7.jpeg" alt="Santai Bersama"></div>
+            <div class="gallery-caption">
+                <h3>Santai Bersama</h3>
+                <p>Masa berkualiti di bawah rindangnya pepohonan</p>
+            </div>
         </div>
 
-        <!-- Foto 8: Wisata Candi/Luar Ruangan -->
         <div class="gallery-card">
-            <div class="gallery-item"><img src="fotokeluarga8.jpeg" alt="Petualangan Bersama"></div>
-            <div class="gallery-caption"><h3>Petualangan Bersama</h3><p>Jalan-jalan keluarga</p></div>
+            <div class="gallery-item"><img src="fotokeluarga8.jpeg" alt="Rumah Kita"></div>
+            <div class="gallery-caption">
+                <h3>Rumah Kita</h3>
+                <p>Tempat di mana cinta dan kehangatan bermula</p>
+            </div>
         </div>
     </div>
 </section>
@@ -1080,18 +1072,15 @@ footer {
             yang dipenuhi doa, tawa, kesabaran,
             dan cinta yang tidak pernah habis.”
         </p>
-        <span>
-            Allahumma baarik 🤍
-        </span>
+        <span>Allahumma baarik 🤍</span>
 
-        <!-- TOMBOL KEJUTAN -->
         <br>
         <button id="surpriseBtn" class="btn btn-surprise" onclick="triggerSurprise()">
             Lihat Kejutan ✨
         </button>
     </div>
 
-    <!-- AREA UCAPAN TERIMA KASIH LEBIH BESAR & MERIAH -->
+    <!-- AREA KEJUTAN (TERIMA KASIH SAJA) -->
     <div id="surpriseArea">
         <div class="thank-you-card">
             <h2>✨ TERIMA KASIH BANYAK ✨</h2>
@@ -1100,15 +1089,12 @@ footer {
                 Semoga Allah senantiasa menjaga kehangatan, cinta, kebahagiaan, dan keberkahan dalam keluarga kita selamanya. Amin ✨
             </p>
             <div class="icons-festive">💐🏡🎉✨🩵</div>
-        </div>
-
-        <!-- SECTION BARCODE / QR CODE -->
-        <div class="qr-card">
-            <h3>Our Family QR 🩵</h3>
-            <p>Pindai QR Code di bawah untuk membuka website keluarga kita.</p>
-            <input class="qr-input" id="qrText" type="url" value="https://kelurgatercinta.vercel.app">
-            <div id="qrcode"></div>
-            <button class="btn" onclick="buatQR()">Buat QR Code ✨</button>
+            
+            <!-- TOMBOL UNTUK MEMBUKA HALAMAN PASSSWORD BARCODE -->
+            <br>
+            <button class="btn" style="background: linear-gradient(135deg, #0f4c81, #0284c7);" onclick="openQROverlay()">
+                Tampilkan Barcode 📱
+            </button>
         </div>
     </div>
 </section>
@@ -1132,6 +1118,7 @@ const validPasswords = [
     "welcome keluarga lathuf"
 ];
 
+/* LOGIN UTAMA WEBSITE */
 function checkAccess() {
     const inputVal = document.getElementById("passwordInput").value.trim().toLowerCase();
     const errorMsg = document.getElementById("errorMsg");
@@ -1157,7 +1144,48 @@ function handleEnter(e) {
     }
 }
 
-// Scroll Reveal Effect
+/* LOGIN KHUSUS HALAMAN BARCODE */
+function openQROverlay() {
+    const qrOverlay = document.getElementById("qrOverlay");
+    const qrPassBox = document.getElementById("qrPassBox");
+    const qrContentBox = document.getElementById("qrContentBox");
+    const qrPasswordInput = document.getElementById("qrPasswordInput");
+    
+    qrPasswordInput.value = "";
+    document.getElementById("qrErrorMsg").style.display = "none";
+    qrPassBox.style.display = "block";
+    qrContentBox.style.display = "none";
+    
+    qrOverlay.classList.add("active");
+}
+
+function closeQROverlay() {
+    document.getElementById("qrOverlay").classList.remove("active");
+}
+
+function checkQRAccess() {
+    const inputVal = document.getElementById("qrPasswordInput").value.trim();
+    const errorMsg = document.getElementById("qrErrorMsg");
+    const qrPassBox = document.getElementById("qrPassBox");
+    const qrContentBox = document.getElementById("qrContentBox");
+
+    // KATA SANDI KHUSUS BARCODE
+    if (inputVal === "Thufaillathuf2706") {
+        errorMsg.style.display = "none";
+        qrPassBox.style.display = "none";
+        qrContentBox.style.display = "block";
+        buatQR();
+    } else {
+        errorMsg.style.display = "block";
+    }
+}
+
+function handleQREnter(e) {
+    if (e.key === "Enter") {
+        checkQRAccess();
+    }
+}
+
 function reveal() {
     const reveals = document.querySelectorAll(".reveal");
     for (let i = 0; i < reveals.length; i++) {
@@ -1173,15 +1201,12 @@ function reveal() {
 window.addEventListener("scroll", reveal);
 reveal();
 
-// Set Year in Footer
 document.getElementById("year").innerText = new Date().getFullYear();
 
-// Surprise Function
 function triggerSurprise() {
     const surpriseArea = document.getElementById("surpriseArea");
     surpriseArea.classList.add("show-surprise");
 
-    // Launch Confetti Effect
     if (typeof confetti === 'function') {
         confetti({
             particleCount: 120,
@@ -1193,7 +1218,6 @@ function triggerSurprise() {
     surpriseArea.scrollIntoView({ behavior: 'smooth' });
 }
 
-// QR Code Generator
 let qr;
 function buatQR() {
     const text = document.getElementById("qrText").value;
@@ -1211,9 +1235,6 @@ function buatQR() {
         });
     }
 }
-
-// Generate QR Code di awal
-buatQR();
 </script>
 </body>
 </html>
